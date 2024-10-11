@@ -1,6 +1,15 @@
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import PageConnexion from "./composants/PageConnexion";
+import Home from "./composants/Home";
+
 function App() {
     return <>
-        <h1 className="title is-1"> TP1 </h1>
+        <BrowserRouter>
+            <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/connexion" element={<PageConnexion />} />
+            </Routes>
+        </BrowserRouter>
     </>
 }
 
