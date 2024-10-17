@@ -31,8 +31,8 @@ const Navbar = () => {
 
                 {/* Navigation items */}
                 <div className="navbar-items">
-                    <Link to="/" className="navbar-link">Accueil</Link>
                     <Link to="/contacts" className="navbar-link">Contacts</Link>
+                    <Link to="/chat" className="navbar-link">Chat</Link>
                 </div>
             </nav>
         </div>
