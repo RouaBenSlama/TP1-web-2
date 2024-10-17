@@ -14,11 +14,13 @@ const Navbar = () => {
             <nav className="navbar">
                 {/* Profile section */}
                 <div className="navbar-profile" onMouseEnter={toggleDropdown} onMouseLeave={toggleDropdown}>
-                    <img
-                        src="https://via.placeholder.com/40"
-                        alt="Profile"
-                        className="profile-icon"
-                    />
+                    <Link to="/profile">
+                        <img
+                            src="https://via.placeholder.com/40"
+                            alt="Profile"
+                            className="profile-icon"
+                        />
+                    </Link>
                     {dropdownOpen && (
                         <div className="navbar-dropdown">
                             <Link to="/profile" className="navbar-item">Mon Profil</Link>

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Navbar from "./Navbar";
 import "./ProfilePage.css";
 
-const Profile = () => {
+const ProfilePage = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [profileImage, setProfileImage] = useState(null);
@@ -63,4 +63,4 @@ const Profile = () => {
     );
 };
 
-export default Profile;
+export default ProfilePage;

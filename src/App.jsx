@@ -6,6 +6,7 @@ import Dashboard from "./composants/Dashboard";
 import Contact from "./composants/Contact";
 import Messenger from "./composants/Chat";
 import Chat from "./composants/Chat";
+import ProfilePage from "./composants/ProfilePage.jsx";
 
 function App() {
     return <>
@@ -17,6 +18,7 @@ function App() {
                 <Route path="/dashboard" element={<Dashboard />} />
                 <Route path="/contacts" element={<Contact />} />
                 <Route path="/chat" element={<Messenger />} />
+                <Route path="/profile" element={<ProfilePage />} />
             </Routes>
         </BrowserRouter>
     </>
