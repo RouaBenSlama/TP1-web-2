@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { v4 as uuidv4 } from "uuid";
 import { db, storage } from "../Firebase"; // Import storage
 import { collection, addDoc, getDocs } from "firebase/firestore"; // Import Firestore methods
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage"; // Import Storage methods
@@ -96,13 +95,13 @@ const Contacts = () => {
 
     return (
         <div>
-            
+
         < Navbar/>
-        
+
         <div className="contacts-container">
-            
+
             <h1 className="title">Mes Contacts</h1>
-            
+
             <div className="contact-list">
                 {contacts.map((contact) => (
                     <div key={contact.id} className="contact-item">
@@ -146,7 +145,7 @@ const Contacts = () => {
                             className="file-input"
                             onChange={handleImageUpload}
                             accept="image/*"
-                            style={{ display: 'none' }} 
+                            style={{ display: 'none' }}
                             id="file-upload"
                         />
                         <label className="button is-primary" htmlFor="file-upload">
