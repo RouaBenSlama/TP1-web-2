@@ -5,37 +5,45 @@ import "./Navbar.css";
 const Navbar = () => {
     const [dropdownOpen, setDropdownOpen] = useState(false);
 
-    const handleMouseEnter = () => {
-        setDropdownOpen(true);
-    };
-
-    const handleMouseLeave = () => {
-        setDropdownOpen(false);
+    const toggleDropdown = () => {
+        setDropdownOpen(!dropdownOpen);
     };
 
     return (
-        <nav className="navbar">
-            <div className="navbar-left">
-                <Link to="/" className="nav-link">Home</Link>
-                <Link to="/contacts" className="nav-link">Contacts</Link>
-                <Link to="/chat" className="nav-link">Chat</Link>
-            </div>
-            <div className="navbar-right" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
-                <div className="profile-icon">
-                    <img
-                        src="https://via.placeholder.com/40" 
-                        alt="Profile"
-                    />
+        <div className="navbar-container">
+            <nav className="navbar is-flex is-flex-direction-column is-justify-content-space-between">
+                <div>
+                    <div className="navbar-item">
+                        <Link to="/" className="navbar-link">Home</Link>
+                    </div>
+                    <div className="navbar-item">
+                        <Link to="/contacts" className="navbar-link">Contacts</Link>
+                    </div>
+                    <div className="navbar-item">
+                        <Link to="/chat" className="navbar-link">Chat</Link>
+                    </div>
                 </div>
-                {dropdownOpen && (
-                    <ul className="dropdown">
-                        <li><Link to="/profile">Mon Profil</Link></li>
-                        <li><Link to="/settings">Paramètres</Link></li>
-                        <li><Link to="/logout">Déconnexion</Link></li>
-                    </ul>
-                )}
-            </div>
-        </nav>
+
+                {/* Profile section pinned at the bottom */}
+                <div className="navbar-item profile-section" onMouseEnter={toggleDropdown} onMouseLeave={toggleDropdown}>
+                    <div className="profile-icon">
+                        <img
+                            src="https://via.placeholder.com/40"
+                            alt="Profile"
+                            className="is-rounded"
+                        />
+                    </div>
+                    {dropdownOpen && (
+                        <div className="navbar-dropdown is-active">
+                            <Link to="/profile" className="navbar-item">Mon Profil</Link>
+                            <Link to="/settings" className="navbar-item">Paramètres</Link>
+                            <hr className="navbar-divider" />
+                            <Link to="/logout" className="navbar-item">Déconnexion</Link>
+                        </div>
+                    )}
+                </div>
+            </nav>
+        </div>
     );
 };
 
