@@ -1,72 +1,78 @@
-/* Vertical navbar container */
 .navbar-container {
     width: 200px;
-    height: 100vh; /* Full height of the viewport */
-    background-color: #007bff; /* Custom background color for the navbar */
-    position: fixed;
-    left: 0;
-    top: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between; /* Profile stays at the bottom */
-}
-
-.navbar {
-    width: 100%;
-    padding-top: 20px;
+    height: 100vh;
+    background-color: #f0f2f5;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    border-right: 1px solid #ddd;
+    padding-left: 10px;
+    margin-left: 0;
 }
 
-.navbar-item {
-    width: 100%;
-    padding: 15px;
+.navbar {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.navbar-items {
+    margin-top: 20px;
+    flex-grow: 1;
 }
 
 .navbar-link {
-    color: white;
+    padding: 15px;
+    color: #54656f;
     text-decoration: none;
     display: block;
-    font-size: 1.2rem;
+    transition: background-color 0.3s;
+    list-style-type: none;
 }
 
 .navbar-link:hover {
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: #e9e9e9; /* Effet au survol */
 }
 
-/* Profile section at the bottom */
-.profile-section {
-    background-color: #0056b3; /* Different color for the profile section */
-    padding: 15px;
-    width: 100%;
+.profile-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin: 20px auto;
+    cursor: pointer;
+}
+
+.navbar-profile {
     text-align: center;
     cursor: pointer;
+    position: relative;
 }
 
-.profile-icon img {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    cursor: pointer;
-}
-
-/* Dropdown menu styling */
 .navbar-dropdown {
-    background-color: white;
     position: absolute;
-    left: 50px; /* Adjust this for correct positioning */
-    bottom: 10px; /* Adjust this for correct positioning */
+    top: 60px;
+    left: 0;
+    background-color: white;
     border: 1px solid #ddd;
-    border-radius: 5px;
-    width: 150px;
+    border-radius: 4px;
+    width: 100%;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-.navbar-dropdown .navbar-item {
-    padding: 10px;
-    color: black;
+.navbar-item {
+    padding: 10px 15px;
+    color: #54656f;
+    text-decoration: none;
+    display: block;
 }
 
-.navbar-dropdown .navbar-item:hover {
+.navbar-item:hover {
     background-color: #f0f0f0;
+}
+
+.navbar-divider {
+    margin: 0;
+    border: 0;
+    height: 1px;
+    background-color: #ddd;
 }

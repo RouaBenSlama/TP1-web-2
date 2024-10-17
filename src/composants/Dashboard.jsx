@@ -7,8 +7,14 @@ const Dashboard = () => {
         <div className="dashboard">
             <Navbar />
             <div className="content">
-                <h1>Welcome to your Dashboard</h1>
-                <p>This is where your main content will go.</p>
+                <div className="messages-container">
+                    <h2>Messages</h2>
+                    {/* Contenu des messages */}
+                </div>
+                <div className="chat-container">
+                    <h2>Chat</h2>
+                    {/* Contenu de la fenêtre de chat */}
+                </div>
             </div>
         </div>
     );
