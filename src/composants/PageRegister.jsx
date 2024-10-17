@@ -13,7 +13,7 @@ const Register = () => {
         e.preventDefault();
         createUserWithEmailAndPassword(auth, email, password)
             .then(() => {
-                window.location.href = "/login"; // Redirect to login after successful registration
+                window.location.href = "/connexion"; // Redirect to login after successful registration
             })
             .catch((err) => {
                 setError(err.message);
