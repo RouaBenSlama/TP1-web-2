@@ -1,30 +1,40 @@
-/* src/Auth.css */
+/* Make sure the page takes full height */
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* Center the form in a smaller box */
 .auth-container {
-    width: 300px;
-    margin: auto;
+    width: 350px; /* A smaller width for a compact look */
     padding: 20px;
     background-color: #fff;
     border-radius: 10px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  .input-group {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* This centers the box */
+}
+
+.input-group {
     margin-bottom: 15px;
-  }
-  
-  .input-group label {
+}
+
+.input-group label {
     display: block;
     margin-bottom: 5px;
-  }
-  
-  .input-group input {
+}
+
+.input-group input {
     width: 100%;
     padding: 10px;
     border: 1px solid #ddd;
     border-radius: 5px;
-  }
-  
-  button {
+}
+
+button {
     width: 100%;
     padding: 10px;
     background-color: #007bff;
@@ -32,14 +42,13 @@
     border: none;
     border-radius: 5px;
     cursor: pointer;
-  }
-  
-  button:hover {
+}
+
+button:hover {
     background-color: #0056b3;
-  }
-  
-  .error {
+}
+
+.error {
     color: red;
     text-align: center;
-  }
-  
+}
