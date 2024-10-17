@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import "./PageConnexion.css"
 import Logo from "./5932535.png"
 
-const PageConnexion = () => {
+const Connexion = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [rememberMe, setRememberMe] = useState(false);
@@ -83,4 +83,4 @@ const PageConnexion = () => {
     )
 }
 
-export default PageConnexion
+export default Connexion
