@@ -1,6 +1,9 @@
 import React from "react";
 import Navbar from "./Navbar";
 import "./Dashboard.css";
+import List from "./list/List"
+import Chat from "./chat/Chat";
+import Details from "./details/Details";
 
 const Dashboard = () => {
     return (
@@ -9,11 +12,13 @@ const Dashboard = () => {
             <div className="content">
                 <div className="messages-container">
                     <h2>Messages</h2>
-                    {/* Contenu des messages */}
+                    <List />
                 </div>
                 <div className="chat-container">
                     <h2>Chat</h2>
                     {/* Contenu de la fenêtre de chat */}
+                    <Chat />
+                    <Details />
                 </div>
             </div>
         </div>

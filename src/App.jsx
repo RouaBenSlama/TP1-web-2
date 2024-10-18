@@ -4,8 +4,8 @@ import Home from "./composants/Home";
 import Register from "./composants/PageRegister"
 import Dashboard from "./composants/Dashboard";
 import Contact from "./composants/Contact";
-import Messenger from "./composants/Chat";
-import Chat from "./composants/Chat";
+import Messenger from "./composants/chat/Chat.jsx";
+//import Chat from "./composants/chat/Chat.jsx";
 import ProfilePage from "./composants/ProfilePage.jsx";
 
 function App() {

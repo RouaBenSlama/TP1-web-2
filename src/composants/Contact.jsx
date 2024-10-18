@@ -96,80 +96,80 @@ const Contacts = () => {
     return (
         <div>
 
-        < Navbar/>
+            < Navbar/>
 
-        <div className="contacts-container">
+            <div className="contacts-container">
 
-            <h1 className="title">Mes Contacts</h1>
+                <h1 className="title">Mes Contacts</h1>
 
-            <div className="contact-list">
-                {contacts.map((contact) => (
-                    <div key={contact.id} className="contact-item">
-                        <div className="contact-avatar">
-                            {contact.image ? (
-                                <img src={contact.image} alt={contact.name} className="avatar-image" />
-                            ) : (
-                                <div className="default-avatar">{contact.name[0]}</div>
-                            )}
+                <div className="contact-list">
+                    {contacts.map((contact) => (
+                        <div key={contact.id} className="contact-item">
+                            <div className="contact-avatar">
+                                {contact.image ? (
+                                    <img src={contact.image} alt={contact.name} className="avatar-image" />
+                                ) : (
+                                    <div className="default-avatar">{contact.name[0]}</div>
+                                )}
+                            </div>
+                            <div className="contact-info">
+                                <p>{contact.name}</p>
+                                <p>{contact.phone}</p>
+                            </div>
                         </div>
-                        <div className="contact-info">
-                            <p>{contact.name}</p>
-                            <p>{contact.phone}</p>
-                        </div>
-                    </div>
-                ))}
-            </div>
-
-            {showForm && (
-                <div className="add-contact-form">
-                    <input
-                        type="text"
-                        className="input"
-                        placeholder="Nom"
-                        value={newContact.name}
-                        onChange={(e) => setNewContact({ ...newContact, name: e.target.value })}
-                        required
-                    />
-                    <input
-                        type="text"
-                        className="input"
-                        placeholder="Téléphone"
-                        value={newContact.phone}
-                        onChange={(e) => setNewContact({ ...newContact, phone: e.target.value })}
-                        required
-                    />
-                    <div className="file-input-container">
-                        <label className="file-label">Photo de profil</label>
-                        <input
-                            type="file"
-                            className="file-input"
-                            onChange={handleImageUpload}
-                            accept="image/*"
-                            style={{ display: 'none' }}
-                            id="file-upload"
-                        />
-                        <label className="button is-primary" htmlFor="file-upload">
-                            Choisir une image
-                        </label>
-                        {uploading && (
-                            <progress className="progress is-primary" value={uploadProgress} max="100">
-                                {uploadProgress}%
-                            </progress>
-                        )}
-                        {uploadSuccess && (
-                            <p className="success-message">Téléchargement terminé !</p>
-                        )}
-                        {imagePreview && <img src={imagePreview} alt="Preview" className="image-preview" />}
-                    </div>
-                    <br />
-                    <button className="button is-success" onClick={handleAddContact}>
-                        Ajouter Contact
-                    </button>
+                    ))}
                 </div>
-            )}
 
-            <button className="add-button" onClick={() => setShowForm(true)}>+</button>
-        </div>
+                {showForm && (
+                    <div className="add-contact-form">
+                        <input
+                            type="text"
+                            className="input"
+                            placeholder="Nom"
+                            value={newContact.name}
+                            onChange={(e) => setNewContact({ ...newContact, name: e.target.value })}
+                            required
+                        />
+                        <input
+                            type="text"
+                            className="input"
+                            placeholder="Téléphone"
+                            value={newContact.phone}
+                            onChange={(e) => setNewContact({ ...newContact, phone: e.target.value })}
+                            required
+                        />
+                        <div className="file-input-container">
+                            <label className="file-label">Photo de profil</label>
+                            <input
+                                type="file"
+                                className="file-input"
+                                onChange={handleImageUpload}
+                                accept="image/*"
+                                style={{ display: 'none' }}
+                                id="file-upload"
+                            />
+                            <label className="button is-primary" htmlFor="file-upload">
+                                Choisir une image
+                            </label>
+                            {uploading && (
+                                <progress className="progress is-primary" value={uploadProgress} max="100">
+                                    {uploadProgress}%
+                                </progress>
+                            )}
+                            {uploadSuccess && (
+                                <p className="success-message">Téléchargement terminé !</p>
+                            )}
+                            {imagePreview && <img src={imagePreview} alt="Preview" className="image-preview" />}
+                        </div>
+                        <br />
+                        <button className="button is-success" onClick={handleAddContact}>
+                        Ajouter Contact
+                        </button>
+                    </div>
+                )}
+
+                <button className="add-button" onClick={() => setShowForm(true)}>+</button>
+            </div>
         </div>
     );
 };
