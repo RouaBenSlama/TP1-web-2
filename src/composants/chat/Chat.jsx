@@ -20,7 +20,18 @@ const Chat = () => {
 
             </div>
             <div className="center"></div>
-            <div className="bottom"></div>
+            <div className="bottom">
+                <div className="icons">
+                    <img src="/avatar.jpg" alt="" />
+                    <img src="/avatar.jpg" alt="" />
+                    <img src="/avatar.jpg" alt="" />
+                </div>
+                <input type="text" placeholder="Type a message ... " />
+                <div className="emoji">
+                    <img src="/avatar.jpg" alt=""/>
+                </div>
+                <button className="sendButton">Envoyé</button>
+            </div>
            
         </div>
     );
