@@ -1,8 +1,12 @@
 import React, { useState } from "react";
 import "./list.css"
+import AddUser from "./addUser/AddUser";
 
 const List = () => {
     const [addUser, setAddUser] = useState(false)
+
+    console.log(addUser);
+
     return (
         <div className="chatList">
             <div className="search">
@@ -39,6 +43,7 @@ const List = () => {
                     <span>John Doe</span>
                     <p>Hello</p>
                 </div>
+                {addUser && <AddUser /> }
             </div>
         </div>
     );

@@ -1,11 +1,21 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Navbar from "./Navbar";
 import "./Dashboard.css";
 import List from "./list/List"
 import Chat from "./chat/Chat";
 import Details from "./details/Details";
+//import { onAuthStateChanged } from "firebase/auth";
 
 const Dashboard = () => {
+
+    /*const user = false;
+
+    useEffect(() => {
+        const unSub = onAuthStateChanged(auth, (user) => {
+            console.log(user)
+        })
+    })
+        */
     return (
         <div className="dashboard">
             <Navbar />
