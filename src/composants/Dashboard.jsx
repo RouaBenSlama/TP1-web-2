@@ -20,6 +20,12 @@ const Dashboard = () => {
                     <Chat />
 
                 </div>
+                <div className="chat-container">
+                    <h2>Chat</h2>
+                    {/* Contenu de la fenêtre de chat */}
+                    <Details />
+
+                </div>
             </div>
         </div>
     );
