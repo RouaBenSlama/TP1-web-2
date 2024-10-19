@@ -3,38 +3,39 @@
     border-left: 1px solid gray;
     border-right: 1px solid gray;
     height: 100%;
+    display: flex;
+    flex-direction: column;
 
-    .top{
+    .top {
         padding: 20px;
         display: flex;
         align-items: center;
         justify-content: space-between;
         border-bottom: 1px solid gray;
 
-
-        .user{
+        .user {
             display: flex;
             align-items: center;
             gap: 20px;
 
-            img{
-                width:60px;
+            img {
+                width: 60px;
                 height: 60px;
                 border-radius: 50%;
                 object-fit: cover;
             }
 
-            .texts{
+            .texts {
                 display: flex;
                 flex-direction: column;
                 gap: 5px;
 
-                span{
+                span {
                     font-size: 19px;
                     font-weight: bold;
                 }
 
-                p{
+                p {
                     font-size: 14px;
                     font-weight: 300;
                     color: gray;
@@ -42,16 +43,105 @@
             }
         }
 
-        .icon{
+        .icons {
             display: flex;
             gap: 20px;
 
-            img{
+            img {
                 width: 20px;
                 height: 20px;
+                cursor: pointer;
+            }
+        }
+    }
+
+    .center {
+        flex: 1;
+        padding: 20px;
+        overflow: scroll;
+        display: flex;
+        flex-direction: column;
+        gap: 20;
+
+        .message{
+            max-width: 70%;
+            display: flex;
+            gap:20px;
+
+            &.owner{
+                align-self: flex-end;
+
+                .texts{
+                    p{
+                        background-color: #1e90ff;
+                    }
+                }
+            }
+        }
+    }
+
+    .bottom {
+        padding: 10px;
+        display: flex;
+        align-items: center;
+        border-top: 1px solid gray;
+        gap: 10px;
+        margin-top: auto;
+
+        .icons {
+            display: flex;
+            gap: 10px;
+            align-items: center;  /* Ensure icons are centered vertically */
+
+            img {
+                width: 24px;    /* Adjust size for visibility */
+                height: 24px;
+                cursor: pointer;
             }
         }
 
+        input {
+            flex: 1;
+            padding: 8px;
+            background-color: gray;
+            border: none;
+            outline: none;
+            color: white;
+            border-radius: 8px;
+            font-size: 14px;
+        }
+
+        .emoji {
+            position: relative; /* Keeps the picker positioned within the emoji icon */
+
+            img {
+                width: 24px;
+                height: 24px;
+                cursor: pointer;
+            }
+
+            .picker {
+                position: absolute;
+                bottom: 40px; /* Adjust to position the emoji picker above the input field */
+                right: 0;
+                z-index: 1000; /* Ensure the picker is above other elements */
+                display: ${openEmoji ? "block" : "none"}; /* Conditionally render the emoji picker */
+                background-color: white; /* Ensure picker is visible */
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            }
+        }
+
+        .sendButon {
+            padding: 8px 12px; /* Reduced padding to limit size */
+            background-color: #1e90ff;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            flex-shrink: 0; /* Prevents the button from growing too much */
+            width: auto;    /* Makes sure the button width adapts to its content */
+            white-space: nowrap; /* Prevents the text from wrapping inside the button */
+        }
     }
-    
 }

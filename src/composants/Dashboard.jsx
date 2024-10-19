@@ -18,7 +18,7 @@ const Dashboard = () => {
                     <h2>Chat</h2>
                     {/* Contenu de la fenêtre de chat */}
                     <Chat />
-                    <Details />
+
                 </div>
             </div>
         </div>

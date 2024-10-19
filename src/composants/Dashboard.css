@@ -28,8 +28,10 @@
 }
 
 .chat-container {
-    width: 70%; /* 70% de la largeur de la section principale */
+    width: 70%; /* 70% of the main section */
     background-color: #f7f7f7;
     padding: 20px;
-    overflow-y: auto;
+    overflow: visible; /* Allow the emoji picker to overflow without scrolling */
+    position: relative; /* Ensure child elements can use absolute positioning */
 }
+
