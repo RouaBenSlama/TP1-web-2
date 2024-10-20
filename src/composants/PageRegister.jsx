@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { createUserWithEmailAndPassword, sendEmailVerification } from "firebase/auth";
+import { createUserWithEmailAndPassword,
+    sendEmailVerification } from "firebase/auth";
 import { auth } from "../Firebase";
 import "./PageRegister.css";
 
