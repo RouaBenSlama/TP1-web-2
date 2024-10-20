@@ -1,11 +1,39 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./list.css"
 import AddUser from "./addUser/AddUser";
+import { auth, db } from "../../Firebase";
+import { doc, getDoc, onSnapshot } from "firebase/firestore";
 
 const List = () => {
     const [addUser, setAddUser] = useState(false)
+    const [chats, setChats] = useState([])
 
-    console.log(addUser);
+    const user = auth.currentUser;
+
+    useEffect(() => {
+        const unsub = onSnapshot(doc(db, "userChats", user.uid), async (res)=> {
+            const items = res.data().chats;
+
+            const promises = items.map(async (item) => {
+                const userDocRef = doc(db, "users",item.receiverId)
+                const userDocSnap = await getDoc(userDocRef)
+
+                const user = userDocSnap.data()
+
+                return {...item, user}
+            })
+
+            const chatData = await Promise.all(promises)
+
+            setChats(chatData.sort((a,b) => b.updatedAt - a.updatedAt))
+        });
+
+        return () => {
+            unsub()
+        }
+    }, [user.uid])
+
+
 
     return (
         <div className="chatList">
@@ -23,28 +51,16 @@ const List = () => {
                 />
 
             </div>
-            <div className="item">
-                <img src="/avatar.jpg" alt="profilPic" />
-                <div className="texts">
-                    <span>John Doe</span>
-                    <p>Hello</p>
+            {chats.map((chat) => (
+                <div className="item" key={chat.chatId}>
+                    <img src="/avatar.jpg" alt="profilPic" />
+                    <div className="texts">
+                        <span>{chat.user.email}</span>
+                        <p>{chat.lastMessage}</p>
+                    </div>
                 </div>
-            </div>
-            <div className="item">
-                <img src="/avatar.jpg" alt="profilPic" />
-                <div className="texts">
-                    <span>John Doe</span>
-                    <p>Hello</p>
-                </div>
-            </div>
-            <div className="item">
-                <img src="/avatar.jpg" alt="profilPic" />
-                <div className="texts">
-                    <span>John Doe</span>
-                    <p>Hello</p>
-                </div>
-                {addUser && <AddUser /> }
-            </div>
+            ))}
+            {addUser && <AddUser /> }
         </div>
     );
 };

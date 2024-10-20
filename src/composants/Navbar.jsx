@@ -11,6 +11,7 @@ const Navbar = () => {
     useEffect(() => {
         // Récupérer les informations de l'utilisateur connecté
         const user = auth.currentUser;
+        console.log(user)
         if (user) {
             setProfileImage(user.photoURL || "https://via.placeholder.com/40");
         }
