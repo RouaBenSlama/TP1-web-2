@@ -4,7 +4,7 @@ import { auth } from "../Firebase";
 import "./Navbar.css";
 import { useUserStore } from "../UserStore";
 
-const Navbar = (props) => {
+const Navbar = () => {
     const [dropdownOpen, setDropdownOpen] = useState(false);
     const [profileImage, setProfileImage] = useState(null);
     const navigate = useNavigate();

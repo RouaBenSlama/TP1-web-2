@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "./Navbar";
 import "./ProfilePage.css";
-import { useUserStore } from "../UserStore";
-import { onAuthStateChanged } from "firebase/auth";
 import { auth, storage } from "../Firebase";
 import { updateEmail, updatePassword, updateProfile } from "firebase/auth";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
