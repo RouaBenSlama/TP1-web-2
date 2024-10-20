@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { auth } from "../Firebase";
 import "./Navbar.css";
@@ -6,9 +6,17 @@ import { useUserStore } from "../UserStore";
 
 const Navbar = (props) => {
     const [dropdownOpen, setDropdownOpen] = useState(false);
+    const [profileImage, setProfileImage] = useState(null);
     const navigate = useNavigate();
 
     const { currentUser } = useUserStore();
+    useEffect(() => {
+        // Récupérer les informations de l'utilisateur connecté
+        const user = auth.currentUser;
+        if (user) {
+            setProfileImage(user.photoURL || "https://via.placeholder.com/40");
+        }
+    }, []);
 
     const toggleDropdown = () => {
         setDropdownOpen(!dropdownOpen);
@@ -32,7 +40,7 @@ const Navbar = (props) => {
                 <div className="navbar-profile" onMouseEnter={toggleDropdown} onMouseLeave={toggleDropdown}>
                     <Link to="/profile">
                         <img
-                            src={currentUser ? currentUser.avatar : "/40.png"}
+                            src={profileImage}
                             alt="Profile"
                             className="profile-icon"
                         />
