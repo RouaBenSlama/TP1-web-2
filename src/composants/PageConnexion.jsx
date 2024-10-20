@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { signInWithEmailAndPassword, signInWithPopup } from 'firebase/auth';
 import { auth, googleProvider, facebookProvider } from '../Firebase';
 import { Link } from 'react-router-dom';
-import "./PageConnexion.css"
-import Logo from "./5932535.png"
+import "./PageConnexion.css";
+import Logo from "./5932535.png";
 
 const Connexion = () => {
     const [email, setEmail] = useState('');
@@ -15,6 +15,8 @@ const Connexion = () => {
         e.preventDefault();
         signInWithEmailAndPassword(auth, email, password)
             .then(() => {
+                // Enregistrer l'heure de connexion
+                localStorage.setItem('loginTime', new Date().getTime());
                 window.location.href = "/dashboard"; // Redirect to dashboard
             })
             .catch((err) => {
@@ -25,17 +27,25 @@ const Connexion = () => {
 
     const handleGoogleLogin = () => {
         signInWithPopup(auth, googleProvider)
-            .then(() => window.location.href = "/dashboard")
+            .then(() => {
+                // Enregistrer l'heure de connexion
+                localStorage.setItem('loginTime', new Date().getTime());
+                window.location.href = "/dashboard";
+            })
             .catch((err) => console.error(err));
     };
 
     const handleFacebookLogin = () => {
         signInWithPopup(auth, facebookProvider)
-            .then(() => window.location.href = "/dashboard")
+            .then(() => {
+                // Enregistrer l'heure de connexion
+                localStorage.setItem('loginTime', new Date().getTime());
+                window.location.href = "/dashboard";
+            })
             .catch((err) => console.error(err));
     };
 
-    return(
+    return (
         <div className="login-container">
             <div className="login-box">
                 <img src={Logo} alt="Logo" className="logo" />
@@ -80,7 +90,7 @@ const Connexion = () => {
                 </div>
             </div>
         </div>
-    )
+    );
 }
 
-export default Connexion
+export default Connexion;
