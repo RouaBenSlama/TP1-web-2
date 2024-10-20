@@ -2,10 +2,13 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { auth } from "../Firebase";
 import "./Navbar.css";
+import { useUserStore } from "../UserStore";
 
-const Navbar = () => {
+const Navbar = (props) => {
     const [dropdownOpen, setDropdownOpen] = useState(false);
     const navigate = useNavigate();
+
+    const { currentUser } = useUserStore();
 
     const toggleDropdown = () => {
         setDropdownOpen(!dropdownOpen);
@@ -14,7 +17,7 @@ const Navbar = () => {
     const handleLogout = () => {
         auth.signOut()
             .then(() => {
-                // Rediriger l'utilisateur vers la page de connexion après la déconnexion
+                // Redirect the user to the login page after logging out
                 navigate("/connexion");
             })
             .catch((error) => {
@@ -29,17 +32,20 @@ const Navbar = () => {
                 <div className="navbar-profile" onMouseEnter={toggleDropdown} onMouseLeave={toggleDropdown}>
                     <Link to="/profile">
                         <img
-                            src="https://via.placeholder.com/40"
+                            src={currentUser ? currentUser.avatar : "/40.png"}
                             alt="Profile"
                             className="profile-icon"
                         />
                     </Link>
+                    {/* Conditionally render email if currentUser is not null */}
+                    {currentUser ? <h2>{currentUser.email}</h2> : <h2>Loading...</h2>}
+
                     {dropdownOpen && (
                         <div className="navbar-dropdown">
                             <Link to="/profile" className="navbar-item">Mon Profil</Link>
                             <Link to="/settings" className="navbar-item">Paramètres</Link>
                             <hr className="navbar-divider" />
-                            <Link to="/logout" className="navbar-item">Déconnexion</Link>
+                            <button onClick={handleLogout} className="navbar-item">Déconnexion</button>
                         </div>
                     )}
                 </div>

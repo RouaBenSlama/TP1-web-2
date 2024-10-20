@@ -1,7 +1,8 @@
 // src/Register.js
 import React, { useState } from "react";
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../Firebase";
+import { auth, db } from "../Firebase"; // Import Firestore database
+import { doc, setDoc } from "firebase/firestore"; // Firestore methods
 import "./PageRegister.css"; // Optionally, you can add styling here
 
 const Register = () => {
@@ -9,15 +10,23 @@ const Register = () => {
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
 
-    const handleRegister = (e) => {
+    const handleRegister = async (e) => {
         e.preventDefault();
-        createUserWithEmailAndPassword(auth, email, password)
-            .then(() => {
-                window.location.href = "/connexion"; // Redirect to login after successful registration
-            })
-            .catch((err) => {
-                setError(err.message);
+        try {
+            const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+            const user = userCredential.user;
+
+            // After successful registration, add user data to Firestore
+            await setDoc(doc(db, "users", user.uid), {
+                email: user.email,
+                createdAt: new Date(),
+                uid: user.uid,
             });
+
+            window.location.href = "/connexion"; // Redirect to login after successful registration
+        } catch (err) {
+            setError(err.message);
+        }
     };
 
     return (
