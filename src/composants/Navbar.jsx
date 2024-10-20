@@ -1,11 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { auth } from "../Firebase";
 import "./Navbar.css";
 
 const Navbar = () => {
     const [dropdownOpen, setDropdownOpen] = useState(false);
+    const [profileImage, setProfileImage] = useState(null);
     const navigate = useNavigate();
+
+    useEffect(() => {
+        // Récupérer les informations de l'utilisateur connecté
+        const user = auth.currentUser;
+        if (user) {
+            setProfileImage(user.photoURL || "https://via.placeholder.com/40");
+        }
+    }, []);
 
     const toggleDropdown = () => {
         setDropdownOpen(!dropdownOpen);
@@ -29,7 +38,7 @@ const Navbar = () => {
                 <div className="navbar-profile" onMouseEnter={toggleDropdown} onMouseLeave={toggleDropdown}>
                     <Link to="/profile">
                         <img
-                            src="https://via.placeholder.com/40"
+                            src={profileImage}
                             alt="Profile"
                             className="profile-icon"
                         />
@@ -39,7 +48,7 @@ const Navbar = () => {
                             <Link to="/profile" className="navbar-item">Mon Profil</Link>
                             <Link to="/settings" className="navbar-item">Paramètres</Link>
                             <hr className="navbar-divider" />
-                            <Link to="/logout" className="navbar-item">Déconnexion</Link>
+                            <button onClick={handleLogout} className="navbar-item">Déconnexion</button>
                         </div>
                     )}
                 </div>
