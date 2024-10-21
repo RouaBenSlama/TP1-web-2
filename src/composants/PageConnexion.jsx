@@ -3,7 +3,7 @@ import { signInWithEmailAndPassword, signInWithPopup, sendPasswordResetEmail } f
 import { auth, googleProvider, facebookProvider } from '../Firebase';
 import { Link } from 'react-router-dom';
 import "./PageConnexion.css";
-import Logo from "./5932535.png";
+
 
 const Connexion = () => {
     const [email, setEmail] = useState('');
@@ -77,8 +77,7 @@ const Connexion = () => {
     return (
         <div className="login-container">
             <div className="login-box box">
-                <img src={Logo} alt="Logo" className="logo" />
-                <h2 className="title is-4">Connexion</h2>
+                <h2 className="title is-4">Login</h2>
                 <form onSubmit={handleLogin}>
                     <div className="field">
                         <label className="label">Email</label>
@@ -157,9 +156,16 @@ const Connexion = () => {
                         </p>
                         <hr />
                         <div className="social-login">
-                            <button className="button is-google is-fullwidth" onClick={handleGoogleLogin}>Se connecter avec Google</button>
-                            <button className="button is-facebook is-fullwidth" onClick={handleFacebookLogin}>Se connecter avec Facebook</button>
+                        <div className="button-group">
+                            <button className="social-button google-button" onClick={handleGoogleLogin}>
+                                Se connecter avec Google
+                            </button>
+                            <span className="or-text">ou</span>
+                            <button className="social-button facebook-button" onClick={handleFacebookLogin}>
+                                 Se connecter avec Facebook
+                            </button>
                         </div>
+                    </div>
                     </>
                 )}
             </div>

@@ -3,58 +3,110 @@
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: #f0f2f5;
+  background-color: #f7f7f7; /* Changed background color to cover the entire screen */
 }
 
 .login-box {
   width: 400px;
   padding: 20px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
-  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
-  text-align: center;
 }
 
-.password-toggle {
-  cursor: pointer;
-  position: absolute;
-  right: 10px;
-  top: 50%;
-  transform: translateY(-50%);
-  color: #007bff;
+.title {
+  font-size: 1.5rem; /* Reduced font size */
 }
 
-.remember-me {
-  justify-content: center;
-  margin-bottom: 15px;
+.label, .forgot-password-link {
+  font-size: 0.875rem; /* Reduced font size */
 }
 
-.social-login .is-google {
-  background-color: #db4437; /* Couleur rouge de Google */
-  color: white;
-  border: none;
-  margin-bottom: 10px;
+.input, .button {
+  font-size: 0.875rem; /* Reduced font size */
 }
 
-.social-login .is-google:hover {
-  background-color: #c23321; /* Couleur plus foncée au survol */
+.has-text-danger {
+  font-size: 0.875rem; /* Reduced font size */
 }
 
-.social-login .is-facebook {
-  background-color: #4267B2; /* Couleur bleue de Facebook */
-  color: white;
-  border: none;
-}
-
-.social-login .is-facebook:hover {
-  background-color: #365899; /* Couleur plus foncée au survol */
-}
-
-.forgot-password-link,
 .register-link {
-  text-align: center;
-  margin: 10px 0;
+  font-size: 0.875rem; /* Reduced font size */
 }
 
-.cancel-btn {
-  margin-top: 10px;
+/* Social login buttons */
+.social-login {
+  margin-top: 1.5rem;
+}
+
+.button-group {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.social-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48%;
+  padding: 10px;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  border: none;
+}
+
+.google-button {
+  background-color: #db4437;
+  color: white;
+}
+
+.google-button:hover {
+  background-color: #e57365; /* Brighter red on hover */
+}
+
+/* Explicitly set icon color for visibility */
+.google-button i,
+.facebook-button i {
+  color: white !important;  /* Ensure the icon color is white */
+}
+
+.facebook-button {
+  background-color: #3b5998;
+  color: white;
+}
+
+.facebook-button:hover {
+  background-color: #4c70ba; /* Slightly lighter blue on hover */
+}
+
+.social-button i {
+  margin-right: 8px;
+  font-size: 1rem;
+}
+
+.or-text {
+  font-size: 0.875rem;
+  color: #555;
+  padding: 0 8px;
+  white-space: nowrap;
+}
+
+/* Mobile-friendly adjustments */
+@media (max-width: 480px) {
+  .social-button {
+      width: 100%;
+      margin-bottom: 10px;
+  }
+
+  .button-group {
+      flex-direction: column;
+      align-items: stretch;
+  }
+
+  .or-text {
+      display: none; /* Remove 'ou' for small screens */
+  }
 }

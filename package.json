@@ -11,12 +11,14 @@
   "dependencies": {
     "bulma": "^0.9.4",
     "emoji-picker-react": "^4.12.0",
-    "firebase": "^10.14.0",
+    "firebase": "^10.14.1",
     "fortawesome": "^0.0.1-security",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-fontawesome": "^1.7.1",
     "react-router-dom": "^6.26.2",
+    "semantic-ui-css": "^2.5.0",
+    "semantic-ui-react": "^2.1.5",
     "zustand": "^5.0.0"
   },
   "devDependencies": {

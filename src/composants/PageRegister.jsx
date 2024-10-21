@@ -40,7 +40,7 @@ const Register = () => {
 
     return (
         <div className="auth-container">
-            <h2>Inscription</h2>
+            <h2>SignUp</h2>
             <form onSubmit={handleRegister}>
                 <div className="input-group">
                     <label>Email</label>
@@ -70,7 +70,7 @@ const Register = () => {
                     />
                 </div>
                 {error && <p className="error">{error}</p>}
-                <button type="submit">Inscrire</button>
+                <button type="submit">SignUp</button>
             </form>
         </div>
     );
