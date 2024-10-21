@@ -62,7 +62,6 @@ const Chat = () => {
     
             await Promise.all(
                 userIDs.map(async (id) => {
-                    console.log("Updating userChats for user:", id); // Log for debugging
                     const userChatRef = doc(db, "userChats", id);
                     const userChatSnapshot = await getDoc(userChatRef);
     
