@@ -4,18 +4,12 @@ import "./Dashboard.css";
 import List from "./list/List"
 import Chat from "./chat/Chat";
 import Details from "./details/Details";
-//import { onAuthStateChanged } from "firebase/auth";
+import { useChatStore } from "../chatStore";
+
 
 const Dashboard = () => {
+    const {chatId} = useChatStore()
 
-    /*const user = false;
-
-    useEffect(() => {
-        const unSub = onAuthStateChanged(auth, (user) => {
-            console.log(user)
-        })
-    })
-        */
     return (
         <div className="dashboard">
             <Navbar />
@@ -27,13 +21,13 @@ const Dashboard = () => {
                 <div className="chat-container">
                     <h2>Chat</h2>
                     {/* Contenu de la fenêtre de chat */}
-                    <Chat />
+                    {chatId && <Chat />}
 
                 </div>
                 <div className="chat-container">
-                    <h2>Chat</h2>
+                    <h2>Detail</h2>
                     {/* Contenu de la fenêtre de chat */}
-                    <Details />
+                    {chatId && <Details />}
 
                 </div>
             </div>
