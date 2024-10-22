@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { createUserWithEmailAndPassword,
-    sendEmailVerification } from "firebase/auth";
-import { auth } from "../Firebase";
+import { createUserWithEmailAndPassword, sendEmailVerification } from "firebase/auth";
+import { auth, db } from "../Firebase"; // Import 'db' from your Firebase setup for Firestore
+import { doc, setDoc } from "firebase/firestore"; // Import Firestore functions
 import "./PageRegister.css";
 
 const Register = () => {
@@ -10,7 +10,7 @@ const Register = () => {
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
 
-    const handleRegister = (e) => {
+    const handleRegister = async (e) => {
         e.preventDefault();
         setError(""); // Reset error message
 
@@ -20,22 +20,30 @@ const Register = () => {
             return;
         }
 
-        // Création du compte si les emails correspondent
-        createUserWithEmailAndPassword(auth, email, password)
-            .then((userCredential) => {
-                // Envoyer un email de vérification
-                sendEmailVerification(userCredential.user)
-                    .then(() => {
-                        alert("Un email de vérification a été envoyé. Veuillez vérifier votre email avant de vous connecter.");
-                        window.location.href = "/connexion"; // Rediriger vers la page de connexion après l'inscription
-                    })
-                    .catch((err) => {
-                        setError("Erreur lors de l'envoi de l'email de vérification : " + err.message);
-                    });
-            })
-            .catch((err) => {
-                setError("Erreur lors de l'inscription : " + err.message);
+        try {
+            // Création du compte si les emails correspondent
+            const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+            const user = userCredential.user;
+
+            // Envoyer un email de vérification
+            await sendEmailVerification(user);
+            alert("Un email de vérification a été envoyé. Veuillez vérifier votre email avant de vous connecter.");
+
+            // Obtenez la date de création du compte
+            const creationDate = new Date().toISOString(); // Format de la date en ISO
+
+            // Enregistrer les informations de l'utilisateur dans Firestore
+            await setDoc(doc(db, "users", user.uid), {
+                uid: user.uid,
+                email: user.email,
+                creationDate: creationDate,
             });
+
+            // Rediriger vers la page de connexion après l'inscription
+            window.location.href = "/connexion";
+        } catch (err) {
+            setError("Erreur lors de l'inscription ou de l'envoi de l'email de vérification : " + err.message);
+        }
     };
 
     return (
