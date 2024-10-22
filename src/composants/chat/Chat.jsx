@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import "./chat.css"
+import "./chat.css";
 import EmojiPicker from "emoji-picker-react";
 import { arrayUnion, doc, getDoc, onSnapshot, updateDoc } from "firebase/firestore";
 import { auth, db, storage } from "../../Firebase";
@@ -17,7 +17,6 @@ const Chat = () => {
     const [showHover, setShowHover] = useState(false);
     const [receiver, setReceiver] = useState(null);
 
-
     const endRef = useRef(null);
     const { chatId, user } = useChatStore();
     const userCurrent = auth.currentUser;
@@ -25,21 +24,6 @@ const Chat = () => {
     useEffect(() => {
         endRef.current?.scrollIntoView({ behavior: "smooth" });
     }, [chat]);
-
-    useEffect(() => {
-        const fetchReceiver = async () => {
-            if (user && user.receiverId) {
-                const receiverDoc = await getDoc(doc(db, "users", user.receiverId));
-                if (receiverDoc.exists()) {
-                    setReceiver(receiverDoc.data());
-                } else {
-                    console.error("No such user!");
-                }
-            }
-        };
-
-        fetchReceiver();
-    }, [user]);
 
     useEffect(() => {
         const fetchReceiver = async () => {
@@ -87,8 +71,6 @@ const Chat = () => {
         let imgUrl = null;
 
         try {
-            console.log("chatId before sending message:", chatId);
-
             if (img.file) {
                 const storageRef = ref(storage, `chatImages/${chatId}/${img.file.name}`);
                 await uploadBytes(storageRef, img.file);
@@ -104,8 +86,8 @@ const Chat = () => {
             const message = {
                 senderId: userCurrent.uid,
                 createAt: new Date(),
-                ...(imgUrl && { img: imgUrl }), // Save image URL if present
-                ...(text && { text }), // Save text if present
+                ...(imgUrl && { img: imgUrl }),
+                ...(text && { text }),
             };
 
             if (text || imgUrl) {
@@ -114,7 +96,6 @@ const Chat = () => {
                 });
             }
 
-            console.log(user);
             const userIDs = [userCurrent.uid, user.receiverId];
 
             await Promise.all(
@@ -124,24 +105,18 @@ const Chat = () => {
 
                     if (userChatSnapshot.exists()) {
                         const userChatData = userChatSnapshot.data();
+                        const chatIndex = userChatData.chats.findIndex(c => c.chatId === chatId);
 
-                        if (userChatData.chats && Array.isArray(userChatData.chats)) {
-                            const chatIndex = userChatData.chats.findIndex(c => c.chatId === chatId);
+                        if (chatIndex !== -1) {
+                            userChatData.chats[chatIndex].lastMessage = text || "Image sent";
+                            userChatData.chats[chatIndex].isSeen = id === userCurrent.uid ? true : false;
+                            userChatData.chats[chatIndex].updateAt = Date.now();
 
-                            if (chatIndex !== -1) {
-                                userChatData.chats[chatIndex].lastMessage = text || "Image sent"; // Update last message if text is empty
-                                userChatData.chats[chatIndex].isSeen = id === userCurrent.uid ? true : false;
-                                userChatData.chats[chatIndex].updateAt = Date.now();
-
-                                await updateDoc(userChatRef, {
-                                    chats: userChatData.chats,
-                                });
-                            } else {
-                                console.error("Chat not found in userChats for ID:", chatId);
-                            }
+                            await updateDoc(userChatRef, {
+                                chats: userChatData.chats,
+                            });
                         } else {
-                            console.error("No chats found in userChatData for user ID:", id);
-                            console.log("userChatData:", userChatData);
+                            console.error("Chat not found in userChats for ID:", chatId);
                         }
                     } else {
                         console.error("User chat document does not exist for user ID:", id);
@@ -160,8 +135,6 @@ const Chat = () => {
         setShowHover(false);
     };
 
-
-
     return (
         <div className="chat">
             <div className="top">
@@ -169,13 +142,13 @@ const Chat = () => {
                     <img src={receiver?.photoURL || "/avatar.jpg"} alt="Profile" />
                     <div className="texts">
                         <span>{receiver?.email || "Loading..."}</span>
-                        <p> Hi my email is {receiver?.email || "Loading..."} nice to meet you</p>
+                        <p>Hi, my email is {receiver?.email || "Loading..."} nice to meet you!</p>
                     </div>
                 </div>
                 <div className="icons">
-                    <img src="/phone.png" alt="phone" />
-                    <img src="/video.png" alt="video" />
-                    <img src="/info.png" alt="info" />
+                    <i className="fas fa-phone" aria-hidden="true"></i>
+                    <i className="fas fa-video" aria-hidden="true"></i>
+                    <i className="fas fa-info-circle" aria-hidden="true"></i>
                 </div>
             </div>
             <div className="center">
@@ -205,24 +178,25 @@ const Chat = () => {
             <div className="bottom">
                 <div className="icons">
                     <label htmlFor="file">
-                        <img src="/img.png" alt="galerie" />
+                        <i className="fas fa-image" aria-hidden="true"></i>
                     </label>
                     <input type="file" id="file" style={{ display: "none" }} onChange={handleImg} />
-                    <img src="/camera.png" alt="camera" />
-                    <img src="/mic.png" alt="microphone" />
+                    <i className="fas fa-camera" aria-hidden="true"></i>
+                    <i className="fas fa-microphone" aria-hidden="true"></i>
                 </div>
                 <input
                     type="text"
-                    placeholder="Type a message ... "
+                    placeholder="Type a message..."
                     value={text}
-                    onChange={(e) => setText(e.target.value)} />
+                    onChange={(e) => setText(e.target.value)}
+                />
                 <div className="emoji">
-                    <img src="/emoji.png" alt="emoji" onClick={() => setOpenEmoji((prev) => !prev)} />
+                    <i className="fas fa-smile" onClick={() => setOpenEmoji((prev) => !prev)}></i>
                     <div className="picker" style={{ display: openEmoji ? "block" : "none", position: "absolute" }}>
                         <EmojiPicker onEmojiClick={handleEmoji} />
                     </div>
                 </div>
-                <button className="sendButon" onClick={handleSend}>Envoyé</button>
+                <button className="sendButton" onClick={handleSend}>Send</button>
             </div>
         </div>
     );
