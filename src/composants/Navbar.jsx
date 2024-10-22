@@ -49,7 +49,7 @@ const Navbar = () => {
                     </Link>
                     {dropdownOpen && (
                         <div className="navbar-dropdown">
-                            <Link to="/profile" className="navbar-item">Mon Profil</Link>
+                            <Link to="/profile" className="navbar-item"> Mon Profil</Link>
                             <Link to="/settings" className="navbar-item">Paramètres</Link>
                             <hr className="navbar-divider" />
                             <button onClick={handleLogout} className="navbar-item">Déconnexion</button>
@@ -59,13 +59,13 @@ const Navbar = () => {
 
                 {/* Navigation items */}
                 <div className="navbar-items">
-                    <Link to="/contacts" className="navbar-link">Contacts</Link>
-                    <Link to="/dashboard" className="navbar-link">Chat</Link>
+                    <Link to="/contacts" className="navbar-link"><i class="fas fa-address-book fa-lg" style={{marginRight: '5px'}}></i> Contacts</Link>
+                    <Link to="/dashboard" className="navbar-link"><i class="fas fa-comment-dots fa-lg" style={{marginRight: '5px'}}></i> Chat</Link>
                 </div>
 
                 {/* Logout button */}
                 <div className="logout-container">
-                    <button onClick={handleLogout} className="logout-button">Déconnexion</button>
+                    <button onClick={handleLogout} className="logout-button">Déconnexion <i class="fas fa-arrow-right-from-bracket"></i></button>
                 </div>
             </nav>
         </div>

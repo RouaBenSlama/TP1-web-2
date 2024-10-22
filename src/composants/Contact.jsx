@@ -32,10 +32,9 @@ const Contacts = () => {
     const handleAddContact = async () => {
         try {
             if (file) {
-                const storageRef = ref(storage, `images/${file.name}`); // Create a storage reference
-                const uploadTask = uploadBytesResumable(storageRef, file); // Use uploadBytesResumable
+                const storageRef = ref(storage, `images/${file.name}`); 
+                const uploadTask = uploadBytesResumable(storageRef, file);
 
-                // Monitor upload progress
                 uploadTask.on(
                     "state_changed",
                     (snapshot) => {
@@ -48,19 +47,17 @@ const Contacts = () => {
                         setUploading(false);
                     },
                     async () => {
-                        // Get the download URL
                         const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
-                        // Add contact with image URL
                         const docRef = await addDoc(collection(db, "contacts"), {
                             ...newContact,
-                            image: downloadURL, // Store the image URL in Firestore
+                            image: downloadURL,
                         });
                         setContacts([...contacts, { ...newContact, image: downloadURL, id: docRef.id }]);
                         resetForm();
                     }
                 );
             } else {
-                // If there's no file, add the contact without an image
+                // If there's no photo, add the contact without a pic
                 const docRef = await addDoc(collection(db, "contacts"), newContact);
                 setContacts([...contacts, { ...newContact, id: docRef.id }]);
                 resetForm();
@@ -83,7 +80,7 @@ const Contacts = () => {
     const handleImageUpload = (e) => {
         const selectedFile = e.target.files[0];
         if (selectedFile) {
-            setFile(selectedFile); // Store the selected file
+            setFile(selectedFile); 
             const reader = new FileReader();
             reader.onloadend = () => {
                 setImagePreview(reader.result);
@@ -94,84 +91,90 @@ const Contacts = () => {
     };
 
     return (
-        <div>
-
-            < Navbar/>
-
-            <div className="contacts-container">
-
-                <h1 className="title">Mes Contacts</h1>
-
-                <div className="contact-list">
-                    {contacts.map((contact) => (
-                        <div key={contact.id} className="contact-item">
-                            <div className="contact-avatar">
-                                {contact.image ? (
-                                    <img src={contact.image} alt={contact.name} className="avatar-image" />
-                                ) : (
-                                    <div className="default-avatar">{contact.name[0]}</div>
-                                )}
+            <div className="contacts-page">
+                <Navbar />
+                <div className="contacts-content">
+                    <h2 className="title">Mes Contacts</h2>
+                    <div className="contact-list">
+                        {contacts.map((contact) => (
+                            <div key={contact.id} className="contact-item">
+                                <div className="contact-avatar">
+                                    {contact.image ? (
+                                        <img src={contact.image} alt={contact.name} className="avatar-image" />
+                                    ) : (
+                                        <div className="default-avatar">{contact.name[0]}</div>
+                                    )}
+                                </div>
+                                <div className="contact-info">
+                                    <h5>{contact.name}</h5>
+                                    <p>{contact.phone}</p>
+                                </div>
                             </div>
-                            <div className="contact-info">
-                                <p>{contact.name}</p>
-                                <p>{contact.phone}</p>
-                            </div>
-                        </div>
-                    ))}
-                </div>
-
-                {showForm && (
-                    <div className="add-contact-form">
-                        <input
-                            type="text"
-                            className="input"
-                            placeholder="Nom"
-                            value={newContact.name}
-                            onChange={(e) => setNewContact({ ...newContact, name: e.target.value })}
-                            required
-                        />
-                        <input
-                            type="text"
-                            className="input"
-                            placeholder="Téléphone"
-                            value={newContact.phone}
-                            onChange={(e) => setNewContact({ ...newContact, phone: e.target.value })}
-                            required
-                        />
-                        <div className="file-input-container">
-                            <label className="file-label">Photo de profil</label>
-                            <input
-                                type="file"
-                                className="file-input"
-                                onChange={handleImageUpload}
-                                accept="image/*"
-                                style={{ display: 'none' }}
-                                id="file-upload"
-                            />
-                            <label className="button is-primary" htmlFor="file-upload">
-                                Choisir une image
-                            </label>
-                            {uploading && (
-                                <progress className="progress is-primary" value={uploadProgress} max="100">
-                                    {uploadProgress}%
-                                </progress>
-                            )}
-                            {uploadSuccess && (
-                                <p className="success-message">Téléchargement terminé !</p>
-                            )}
-                            {imagePreview && <img src={imagePreview} alt="Preview" className="image-preview" />}
-                        </div>
-                        <br />
-                        <button className="button is-success" onClick={handleAddContact}>
-                        Ajouter Contact
-                        </button>
+                        ))}
                     </div>
-                )}
-
-                <button className="add-button" onClick={() => setShowForm(true)}>+</button>
+        
+                    {showForm && (
+                        <div className="modal-overlay">
+                            <div className="modal-content">
+                                <h2>Ajouter un Contact</h2>
+                                <input
+                                    type="text"
+                                    className="input"
+                                    placeholder="Nom"
+                                    value={newContact.name}
+                                    onChange={(e) => setNewContact({ ...newContact, name: e.target.value })}
+                                    required
+                                />
+                                <input
+                                    type="text"
+                                    className="input"
+                                    placeholder="Téléphone"
+                                    value={newContact.phone}
+                                    onChange={(e) => setNewContact({ ...newContact, phone: e.target.value })}
+                                    required
+                                />
+                                <div className="file-input-container">
+                                    <label className="file-label">Photo de profil</label>
+                                    <input
+                                        type="file"
+                                        className="file-input"
+                                        onChange={handleImageUpload}
+                                        accept="image/*"
+                                        style={{ display: 'none' }}
+                                        id="file-upload"
+                                    />
+                                    <label className="button is-primary" htmlFor="file-upload">
+                                        <i className="fas fa-image"></i> Choisir une image
+                                    </label>
+                                    {uploading && (
+                                        <progress className="progress is-link" value={uploadProgress} max="100">
+                                            {uploadProgress}%
+                                        </progress>
+                                    )}
+                                    {uploadSuccess && (
+                                        <p className="success-message">Téléchargement terminé !</p>
+                                    )}
+                                    {imagePreview && <img src={imagePreview} alt="Preview" className="image-preview" />}
+                                </div>
+                                <div className="modal-actions">
+                                    <button className="button is-link" onClick={handleAddContact}>
+                                        <i className="fas fa-user-plus"></i> Ajouter Contact
+                                    </button>
+                                    <button className="button is-danger" onClick={resetForm}>
+                                        <i className="fas fa-times"></i> Annuler
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    )}
+        
+                    <button className="add-button" onClick={() => setShowForm(true)}>
+                        <i className="fas fa-user-plus"></i> Ajouter un contact
+                    </button>
+                </div>
             </div>
-        </div>
-    );
+        );
+        
 };
 
 export default Contacts;

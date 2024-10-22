@@ -138,7 +138,7 @@ const ProfilePage = () => {
         <div className="profile-page">
             <Navbar />
             <div className="profile-content">
-                <h2 style={{ fontSize: '1.5rem' }}>Mon Profil</h2>
+                <h2 style={{ fontSize: '1.5rem', fontWeight: 'bold' }}>Mon Profil</h2>
 
                 {authError && <div className="notification is-danger">{authError}</div>}
 
