@@ -3,32 +3,38 @@
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background: #F5F7FA; 
+  background-color: rgba(255, 255, 255, 0.8);
   font-family: "Montserrat", sans-serif;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, #6cffe9, #4A90E2);
+  background-size: 400% 400%;
+  animation: gradient-animation 15s ease infinite;
 }
 
 .login-box {
   width: 450px;
-  padding: 30px; 
-  background: #FFFFFF; 
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); 
-  border-radius: 12px; 
+  padding: 30px;
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  z-index: 1;
 }
 
 #title {
-  color: #4A90E2; 
-  font-size: 1.8rem; 
-  text-align: center; 
+  color: #4a90e2;
+  font-size: 1.8rem;
+  text-align: center;
   font-weight: lighter;
 }
 
 #labels {
-  color: #333; 
+  color: #333;
 }
 
 .label, .forgot-password-link {
   font-size: 0.875rem;
-  color: #4A90E2; 
+  color: #4a90e2;
 }
 
 .input {
@@ -36,8 +42,8 @@
 }
 
 #btnConnexion {
-  background-color: #E94E77; 
-  color: #FFFFFF; 
+  background-color: #50E3C2;
+  color: #ffffff;
   width: 100%;
   padding: 10px;
   border: none;
@@ -46,17 +52,17 @@
 }
 
 #btnConnexion:hover {
-  background-color: #D72D5B; 
+  background-color: #50E3C2;
 }
 
 .has-text-danger {
   font-size: 0.875rem;
-  color: red; 
+  color: red;
 }
 
 .register-link {
   font-size: 0.875rem;
-  color: #50E3C2; 
+  color: #50e3c2;
 }
 
 /* Social login buttons */
@@ -83,7 +89,6 @@
   border: none;
 }
 
-/* Social buttons */
 .google-button {
   background-color: #db4437;
   color: white;

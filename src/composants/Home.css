@@ -4,64 +4,70 @@
     align-items: center;
     justify-content: center;
     height: 100vh;
-    background: #F5F7FA; 
+    background: linear-gradient(135deg, #6cffe9, #4A90E2);
+    background-size: 400% 400%;
     font-family: "Montserrat", sans-serif;
-    padding: 0 20px; 
+    padding: 0 20px;
+    position: relative;
+    z-index: 1;
+    animation: gradient-animation 15s ease infinite;
 }
 
 .home-title {
-    font-size: 2.5rem; 
+    font-size: 3rem;
     margin-bottom: 20px;
-    color: #4A90E2; 
-    text-align: center; 
+    color: #4A90E2;
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .home-title i {
-    color: #50E3C2; 
+    color: #50E3C2;
 }
 
 .button-card {
-    background-color: #FFFFFF; 
-    border-radius: 12px; 
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 12px;
     padding: 40px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); 
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15); 
     display: flex;
     flex-direction: column;
-    align-items: center; 
-    gap: 20px; 
+    align-items: center;
+    gap: 20px;
+    z-index: 2;
 }
 
 .button-container {
     display: flex;
     flex-direction: row;
-    gap: 20px; 
-    width: 100%; 
+    gap: 20px;
+    width: 100%;
     justify-content: center;
 }
 
 .home-btn {
-    padding: 15px 30px; 
+    padding: 15px 30px;
     font-size: 1.1rem;
-    background-color: #E94E77; 
-    color: #FFFFFF; 
+    background-color: #50E3C2;
+    color: #FFFFFF;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 .home-btn:hover {
-    background-color: #D72D5B; 
-    transform: scale(1.05); 
+    background-color: #50E3C2;
+    transform: scale(1.05);
 }
 
 p {
-    margin-top: 10px; 
-    color: #333; 
-    text-align: center; 
+    margin-top: 10px;
+    color: #333;
+    text-align: center;
 }
 
-/* Animation */
 h1 span {
     position: relative;
     opacity: 0;
@@ -73,17 +79,27 @@ h1 span {
     100% { transform: translateY(0); opacity: 1; }
 }
 
-/* icon stye */
 .icon-container {
     margin-left: 10px;
     font-size: 2rem;
-    color: #4A90E2; 
+    color: #50E3C2;
     opacity: 0;
     animation: fade-in-icon 1s forwards ease;
-    animation-delay: 0.5s; 
+    animation-delay: 0.5s;
 }
 
 @keyframes fade-in-icon {
     0% { transform: translateY(0.8em); opacity: 0; }
     100% { transform: translateY(0); opacity: 1; }
+}
+
+.home-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: -1;
 }

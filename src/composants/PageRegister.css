@@ -2,13 +2,15 @@ body, html {
     height: 100%;
     margin: 0;
     font-family: "Montserrat", sans-serif; 
-    background: #F5F7FA; 
+    background: linear-gradient(135deg, #6cffe9, #4A90E2);
+    background-size: 400% 400%;
+    animation: gradient-animation 15s ease infinite;
 }
 
 .auth-container {
     width: 350px; 
     padding: 30px; 
-    background-color: #FFFFFF; 
+    background: rgba(255, 255, 255, 0.8);
     border-radius: 10px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); 
     position: absolute;
@@ -54,7 +56,7 @@ h1 {
 .signup-button {
     width: 100%;
     padding: 10px;
-    background-color: #E94E77; 
+    background-color: #50E3C2; 
     color: #FFFFFF; 
     border: none;
     border-radius: 5px;
@@ -63,5 +65,5 @@ h1 {
 }
 
 .signup-button:hover {
-    background-color: #D72D5B; 
+    background-color: #50E3C2; 
 }

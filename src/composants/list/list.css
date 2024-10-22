@@ -7,18 +7,20 @@
 
 .search {
     display: flex;
-    align-items: center;
+    align-items: center; /* Centre verticalement */
+    justify-content: center; /* Centre horizontalement */
     gap: 20px;
     padding: 20px;
 }
 
 .searchBar {
-    flex: 1;
+    flex: 1; /* Permet à la barre de recherche d'occuper tout l'espace disponible */
     background-color: rgb(158, 158, 158);
     display: flex;
     align-items: center;
-    gap: 20px;
+    gap: 10px;
     border-radius: 10px;
+    padding: 10px; /* Ajoute un peu de padding à l'intérieur */
 }
 
 .input {
