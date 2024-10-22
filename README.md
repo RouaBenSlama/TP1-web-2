@@ -29,18 +29,22 @@ This project is a real-time chat application built using **React** and **Firebas
 ## Setup and Installation
 
 1. Clone the repository:
+   ```bash
    git clone https://github.com/your-username/your-repo-name.git
 
 2. Navigate to the project directory:
+   ```bash
    cd your-repo-name
 
 3. Install dependencies:
+   ```bash
    npm install
 
 4. Set up Firebase:
    - Go to the Firebase Console and create a new project.
    - Set up Firebase Authentication, Firestore, and Storage.
    - Add your Firebase configuration in .env:
+     ```bash
       REACT_APP_API_KEY=your-api-key
       REACT_APP_AUTH_DOMAIN=your-auth-domain
       REACT_APP_PROJECT_ID=your-project-id
@@ -49,6 +53,7 @@ This project is a real-time chat application built using **React** and **Firebas
       REACT_APP_APP_ID=your-app-id
 
 5. Start
+   ```bash
    npx vite or npm start
 
 ## Authors 
