@@ -177,4 +177,17 @@
             white-space: nowrap; /* Prevents the text from wrapping inside the button */
         }
     }
+},
+.tooltip {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    top: -30px; /* Adjust as necessary */
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 12px;
+    z-index: 10; /* Ensure it appears above other elements */
 }
+
