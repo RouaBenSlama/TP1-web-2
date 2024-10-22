@@ -6,6 +6,7 @@ import "./Navbar.css";
 const Navbar = () => {
     const [dropdownOpen, setDropdownOpen] = useState(false);
     const [profileImage, setProfileImage] = useState(null);
+    const [courriel, setCourriel] = useState('')
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -14,6 +15,7 @@ const Navbar = () => {
         console.log(user)
         if (user) {
             setProfileImage(user.photoURL || "https://via.placeholder.com/40");
+            setCourriel(user.email)
         }
     }, []);
 
@@ -43,6 +45,7 @@ const Navbar = () => {
                             alt="Profile"
                             className="profile-icon"
                         />
+                        <h4 id='courriel'>{courriel}</h4>
                     </Link>
                     {dropdownOpen && (
                         <div className="navbar-dropdown">

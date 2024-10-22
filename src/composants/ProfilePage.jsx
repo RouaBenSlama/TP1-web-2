@@ -138,26 +138,31 @@ const ProfilePage = () => {
         <div className="profile-page">
             <Navbar />
             <div className="profile-content">
-                <h2>Mon Profil</h2>
+                <h2 style={{ fontSize: '1.5rem' }}>Mon Profil</h2>
 
                 {authError && <div className="notification is-danger">{authError}</div>}
 
                 <form className="profile-form">
                     <div className="form-group">
                         <label htmlFor="profileImage">Photo de profil :</label>
-                        <input
-                            type="file"
-                            id="profileImage"
-                            accept="image/*"
-                            onChange={handleImageChange}
-                        />
-                        <button
-                            type="button"
-                            className="button is-link"
-                            onClick={handleUpdateProfileImage}
-                        >
-                            Mettre à jour la photo
-                        </button>
+                        <div id="inputphoto">
+                            <input
+                                type="file"
+                                id="profileImage"
+                                accept="image/*"
+                                onChange={handleImageChange}
+                            />
+                            <button
+                                type="button"
+                                className="button"
+                                onClick={handleUpdateProfileImage}
+                                style={{color: 'white'}}
+                                id="btnajour"
+
+                            >
+                                Mettre à jour
+                            </button>
+                        </div>
                     </div>
 
                     <div className="form-group">
@@ -171,7 +176,7 @@ const ProfilePage = () => {
                     </div>
 
                     <div className="form-group">
-                        <label htmlFor="newEmail">Nouveau email (facultatif) :</label>
+                        <label htmlFor="newEmail">Nouveau email <span style={{color: '#757575'}}>(facultatif)</span> :</label>
                         <input
                             type="email"
                             id="newEmail"
@@ -203,22 +208,25 @@ const ProfilePage = () => {
                             placeholder="Entrez un nouveau mot de passe"
                         />
                     </div>
+                    <div className="button-container">
+                        <button
+                            type="button"
+                            className="button"
+                            onClick={handleUpdateProfile}
+                            style={{color: 'white'}}
+                        >
+                            Enregistrer
+                        </button>
 
-                    <button
-                        type="button"
-                        className="button is-link"
-                        onClick={handleUpdateProfile}
-                    >
-                        Enregistrer les modifications
-                    </button>
-
-                    <button
-                        type="button"
-                        className="button is-danger"
-                        onClick={handleDeleteAccount}
-                    >
-                        Supprimer le compte
-                    </button>
+                        <button
+                            type="button"
+                            className="button"
+                            onClick={handleDeleteAccount}
+                            style={{color: 'white'}}
+                        >
+                            Supprimer le compte
+                        </button>
+                    </div>
                 </form>
             </div>
         </div>
