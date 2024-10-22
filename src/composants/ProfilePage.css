@@ -1,24 +1,19 @@
 .profile-page {
     display: flex;
     height: 100vh;
-    background: #F5F7FA;
+    background: linear-gradient(135deg, #6cffe9, #4A90E2);
+    background-size: 400% 400%;
+    animation: gradient-animation 15s ease infinite;
     font-family: "Montserrat", sans-serif;
 }
 
 .profile-content {
     flex-grow: 1;
     padding: 20px;
-<<<<<<< HEAD
-    background: linear-gradient(135deg, #6cffe9, #4A90E2);
-    background-size: 400% 400%;
-    animation: gradient-animation 15s ease infinite;
-    overflow-y: auto;
-=======
 }
 
 h2 {
     text-align: center;
->>>>>>> e70b32613a11d377a891c914ae1ff73f38ff7db7
 }
 
 .profile-form {

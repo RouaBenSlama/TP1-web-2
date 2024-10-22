@@ -1,7 +1,9 @@
 .contacts-page {
     display: flex;
     height: 100vh;
-    background: #F5F7FA;
+    background: linear-gradient(135deg, #6cffe9, #4A90E2);
+    background-size: 400% 400%;
+    animation: gradient-animation 15s ease infinite;
     font-family: "Montserrat", sans-serif;
 }
 
@@ -63,6 +65,8 @@
 
 
 .contact-info h5 {
+    flex: 1;
+    text-align: left;
     color: #4A90E2; 
     margin: 0;
 }

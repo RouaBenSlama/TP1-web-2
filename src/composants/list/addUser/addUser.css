@@ -33,7 +33,7 @@
 button {
     padding: 10px;
     border-radius: 10px;
-    background-color: blue;
+    background-color: #4a90e2;
     color: white;
     border: none;
     cursor: pointer;
@@ -62,7 +62,7 @@ button {
     button {
         padding: 5px 10px;
         border-radius: 10px;
-        background-color: green;
+        background-color: #50E3C2;
         color: white;
         border: none;
         cursor: pointer;
