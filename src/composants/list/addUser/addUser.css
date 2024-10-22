@@ -1,60 +1,72 @@
 .addUser {
-    width: 400px; /* Adjust width as needed */
-    height: max-content;
-    padding: 30px;
+    width: 400px;
+    padding: 20px;
     background-color: gray;
     border-radius: 10px;
-    position: absolute;
-    top: 0;
-    right: 0;
-    left: 0;
-    bottom: 0;
-    margin: auto;
-    z-index: 1000; /* Ensure it sits above other content */
+    position: fixed; /* Changed to fixed to center properly */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
-    .form {
+.closeButton {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.form {
+    display: flex;
+    gap: 20px;
+    justify-content: flex-start;
+}
+
+button {
+    padding: 10px;
+    border-radius: 10px;
+    background-color: blue;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.user {
+    margin-top: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+
+    .detail {
         display: flex;
+        align-items: center;
         gap: 20px;
-        justify-content: flex-start; /* Align items to the left */
+
+        img {
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+            border-radius: 50%;
+        }
     }
 
     button {
-        padding: 10px;
+        padding: 5px 10px;
         border-radius: 10px;
-        background-color: blue; /* Change to blue for the search button */
+        background-color: green;
         color: white;
         border: none;
         cursor: pointer;
-    }
-
-    .user {
-        margin-top: 50px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between; /* This keeps the items on opposite sides */
-        width: 100%; /* Ensure full width for proper alignment */
-
-        .detail {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            img {
-                width: 50px;
-                height: 50px;
-                object-fit: cover;
-                border-radius: 50%;
-            }
-        }
-
-        button {
-            padding: 5px 10px; /* Make the button smaller */
-            border-radius: 10px;
-            background-color: green;
-            color: white;
-            border: none;
-            cursor: pointer;
-            margin-left: auto; /* Push the button to the right */
-            width: auto; /* Set width to auto for better sizing */
-        }
+        margin-left: auto;
+        width: auto;
     }
 }
