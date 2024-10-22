@@ -11,6 +11,7 @@ import {
     EmailAuthProvider,
 } from "firebase/auth";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+import { doc, updateDoc, getFirestore } from "firebase/firestore";
 
 const ProfilePage = () => {
     const [currentEmail, setCurrentEmail] = useState("");
@@ -79,7 +80,8 @@ const ProfilePage = () => {
     const handleUpdateProfileImage = async () => {
         if (profileImage && currentUser) {
             try {
-                const storageRef = ref(storage, `profileImages/${currentUser.uid}`);
+                // Define the path in Firebase Storage
+                const storageRef = ref(storage, `profileImages/${currentUser.uid}/${profileImage.name}`);
                 const uploadTask = uploadBytesResumable(storageRef, profileImage);
 
                 uploadTask.on(
@@ -90,13 +92,24 @@ const ProfilePage = () => {
                         setAuthError("Erreur lors de l'upload de l'image.");
                     },
                     async () => {
+                        // Get the download URL for the uploaded image
                         const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
                         console.log("Photo de profil mise à jour :", downloadURL);
 
+                        // Update the Firebase Auth user profile
                         await updateProfile(currentUser, {
                             photoURL: downloadURL,
                         });
-                        alert("Photo de profil mise à jour avec succès !");
+
+                        // Update Firestore: add the photoURL to the user's document based on their email
+                        const db = getFirestore();
+                        const userDocRef = doc(db, "users", currentUser.uid);
+                        await updateDoc(userDocRef, {
+                            photoURL: downloadURL, // Store the photoURL in Firestore
+                            email: currentUser.email, // Ensure the email is stored or updated as well
+                        });
+
+                        alert("Photo de profil mise à jour avec succès et ajoutée à Firestore !");
                     }
                 );
             } catch (error) {
@@ -105,6 +118,7 @@ const ProfilePage = () => {
             }
         }
     };
+
 
     const handleDeleteAccount = async () => {
         if (window.confirm("Êtes-vous sûr de vouloir supprimer votre compte ? Cette action est irréversible.")) {

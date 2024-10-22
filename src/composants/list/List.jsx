@@ -12,7 +12,6 @@ const List = () => {
 
     const user = auth.currentUser;
     const { changeChat } = useChatStore();
-    console.log(user.uid);
 
     useEffect(() => {
         const unsub = onSnapshot(doc(db, "userChats", user.uid), async (res) => {
@@ -22,14 +21,22 @@ const List = () => {
                 const userDocRef = doc(db, "users", item.receiverId);
                 const userDocSnap = await getDoc(userDocRef);
 
-                const user = userDocSnap.data();
+                const userData = userDocSnap.data();
 
-                if (!user) {
+                if (!userData) {
                     console.error(`User with ID ${item.receiverId} not found`);
                     return null;
                 }
 
-                return { ...item, user, chatId: item.chatId };
+                // Fetch and set the avatar or fallback to a default image
+                const avatarUrl = userData.photoURL || "/avatar.jpg";
+
+                return {
+                    ...item,
+                    user: userData,
+                    chatId: item.chatId,
+                    avatar: avatarUrl
+                };
             });
 
             const chatData = await Promise.all(promises);
@@ -134,7 +141,7 @@ const List = () => {
                     style={{ backgroundColor: chat?.isSeen ? "transparent" : "blue" }}
                 >
                     <img
-                        src={chat.user.avatar || "/avatar.jpg"}
+                        src={chat.avatar} // Use the avatar URL fetched from Firestore
                         alt="profilePic"
                     />
                     <div className="texts">
