@@ -7,16 +7,16 @@ This project is a real-time chat application built using **React** and **Firebas
 ## Features
 
 1. **User Authentication**  
-   Users can sign up and log in securely using Firebase Authentication. Access to the chat room is restricted to authenticated users only.
+   Users can sign up and log in securely using Firebase Authentication. Access to the chat is restricted to authenticated users only.
 
 2. **Real-Time Chat**  
    The chat system is powered by Firebase Firestore, allowing instant messaging between users in the chat room. Messages are updated in real-time to ensure a seamless communication experience.
 
 3. **Profile Management**  
-   Users can manage their profile information, including the ability to upload, update, or delete their profile picture using Firebase Storage.
+   Users can manage their profile information, including the ability to upload, update, or delete their profile picture, email and/or password using Firebase Storage.
 
 4. **User Interface Design**  
-   The user interfaces are designed for ease of use and include pages for account creation, login, and chat room interaction. We have focused on creating a user-friendly and intuitive design to enhance the overall user experience.
+   The user interfaces are designed for ease of use and include pages for account creation, login, and chat interaction. We have focused on creating a user-friendly and intuitive design to enhance the overall user experience.
 
 ## Technologies Used
 
@@ -29,18 +29,22 @@ This project is a real-time chat application built using **React** and **Firebas
 ## Setup and Installation
 
 1. Clone the repository:
+   ```bash
    git clone https://github.com/your-username/your-repo-name.git
 
 2. Navigate to the project directory:
+   ```bash
    cd your-repo-name
 
 3. Install dependencies:
+   ```bash
    npm install
 
 4. Set up Firebase:
    - Go to the Firebase Console and create a new project.
    - Set up Firebase Authentication, Firestore, and Storage.
    - Add your Firebase configuration in .env:
+     ```bash
       REACT_APP_API_KEY=your-api-key
       REACT_APP_AUTH_DOMAIN=your-auth-domain
       REACT_APP_PROJECT_ID=your-project-id
@@ -49,6 +53,7 @@ This project is a real-time chat application built using **React** and **Firebas
       REACT_APP_APP_ID=your-app-id
 
 5. Start
+   ```bash
    npx vite or npm start
 
 ## Authors 
