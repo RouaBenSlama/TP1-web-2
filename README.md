@@ -25,3 +25,34 @@ This project is a real-time chat application built using **React** and **Firebas
 - **Firebase Firestore**: For real-time storage and retrieval of chat messages.
 - **Firebase Storage**: For uploading and managing user profile pictures.
 - **CSS & Bulma**: For styling and designing the user interface.
+
+## Setup and Installation
+
+1. Clone the repository:
+   git clone https://github.com/your-username/your-repo-name.git
+
+2. Navigate to the project directory:
+   cd your-repo-name
+
+3. Install dependencies:
+   npm install
+
+4. Set up Firebase:
+   - Go to the Firebase Console and create a new project.
+   - Set up Firebase Authentication, Firestore, and Storage.
+   - Add your Firebase configuration in .env:
+      REACT_APP_API_KEY=your-api-key
+      REACT_APP_AUTH_DOMAIN=your-auth-domain
+      REACT_APP_PROJECT_ID=your-project-id
+      REACT_APP_STORAGE_BUCKET=your-storage-bucket
+      REACT_APP_MESSAGING_SENDER_ID=your-messaging-sender-id
+      REACT_APP_APP_ID=your-app-id
+
+5. Start
+   npx vite or npm start
+
+## Authors 
+- David Chiu
+- Daniel To
+- Judith Andrasko
+- Roua Ben Slama
