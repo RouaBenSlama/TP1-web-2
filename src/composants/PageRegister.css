@@ -1,21 +1,20 @@
-/* Make sure the page takes full height */
 body, html {
     height: 100%;
     margin: 0;
-    font-family: Arial, sans-serif;
+    font-family: "Montserrat", sans-serif; 
+    background: #2eb872; 
 }
 
-/* Center the form in a smaller box */
 .auth-container {
-    width: 350px; /* A smaller width for a compact look */
+    width: 350px; 
     padding: 20px;
-    background-color: #fff;
+    background-color: #feffea; 
     border-radius: 10px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 4px 8px rgba(102, 102, 107, 0.5); 
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%); /* This centers the box */
+    transform: translate(-50%, -50%); 
 }
 
 .input-group {
@@ -25,6 +24,7 @@ body, html {
 .input-group label {
     display: block;
     margin-bottom: 5px;
+    color: #606060; 
 }
 
 .input-group input {
@@ -34,21 +34,34 @@ body, html {
     border-radius: 5px;
 }
 
-button {
-    width: 100%;
-    padding: 10px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-button:hover {
-    background-color: #0056b3;
-}
-
 .error {
     color: red;
     text-align: center;
+}
+
+.forgot-password-link, .register-link {
+    font-size: 0.875rem;
+    color: #2eb872; /* Third color for consistency */
+}
+
+h1 {
+    text-align: center;
+    color: #8c8c8c; 
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+}
+
+.signup-button {
+    width: 100%;
+    padding: 10px;
+    background-color: #ff5d6e; 
+    color: #feffea; 
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.875rem; 
+}
+
+.signup-button:hover {
+    background-color: #fd7482; 
 }

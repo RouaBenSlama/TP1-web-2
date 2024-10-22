@@ -9,6 +9,7 @@
     "fix": "eslint . --ext js,jsx --fix --report-unused-disable-directives --max-warnings 0"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^6.6.0",
     "bulma": "^0.9.4",
     "emoji-picker-react": "^4.12.0",
     "firebase": "^10.14.1",

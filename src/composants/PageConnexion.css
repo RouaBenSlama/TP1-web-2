@@ -3,35 +3,49 @@
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: #f7f7f7; /* Changed background color to cover the entire screen */
+  background: #2eb872; 
+  font-family: "Montserrat", sans-serif;
 }
 
 .login-box {
-  width: 400px;
+  width: 450px;
   padding: 20px;
-  background-color: #ffffff;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background: #feffea; 
+  box-shadow: 0 4px 8px rgb(102, 102, 107);
   border-radius: 8px;
 }
 
-.title {
-  font-size: 1.5rem; /* Reduced font size */
+
+#title{
+  color: #8c8c8c; 
+  font-size: 1.5rem;
+
 }
 
+#labels{
+  color: #606060;
+}
 .label, .forgot-password-link {
-  font-size: 0.875rem; /* Reduced font size */
+  font-size: 0.875rem;
+  color: #2eb872; 
 }
 
 .input, .button {
-  font-size: 0.875rem; /* Reduced font size */
+  font-size: 0.875rem;
+}
+
+#btnConnexion {
+  background-color: #ff5d6e; 
+  color: #feffea;
 }
 
 .has-text-danger {
-  font-size: 0.875rem; /* Reduced font size */
+  font-size: 0.875rem;
 }
 
 .register-link {
-  font-size: 0.875rem; /* Reduced font size */
+  font-size: 0.875rem;
+  color: #a3de83; 
 }
 
 /* Social login buttons */
@@ -58,28 +72,28 @@
   border: none;
 }
 
+/* Keep social button colors as is */
 .google-button {
   background-color: #db4437;
   color: white;
 }
 
 .google-button:hover {
-  background-color: #e57365; /* Brighter red on hover */
+  background-color: #e57365;
 }
 
-/* Explicitly set icon color for visibility */
 .google-button i,
 .facebook-button i {
-  color: white !important;  /* Ensure the icon color is white */
+  color: white !important;
 }
 
 .facebook-button {
-  background-color: #3b5998;
+  background-color: #1877f2;
   color: white;
 }
 
 .facebook-button:hover {
-  background-color: #4c70ba; /* Slightly lighter blue on hover */
+  background-color: #3b86e7;
 }
 
 .social-button i {
@@ -92,21 +106,4 @@
   color: #555;
   padding: 0 8px;
   white-space: nowrap;
-}
-
-/* Mobile-friendly adjustments */
-@media (max-width: 480px) {
-  .social-button {
-      width: 100%;
-      margin-bottom: 10px;
-  }
-
-  .button-group {
-      flex-direction: column;
-      align-items: stretch;
-  }
-
-  .or-text {
-      display: none; /* Remove 'ou' for small screens */
-  }
 }

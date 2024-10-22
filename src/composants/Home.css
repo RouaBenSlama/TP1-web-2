@@ -4,32 +4,86 @@
     align-items: center;
     justify-content: center;
     height: 100vh;
-    background-color: #f0f2f5;
+    background: #2eb872;
+    font-family: "Montserrat", sans-serif;
+    padding: 0 20px; 
 }
 
 .home-title {
-    font-size: 2rem;
+    font-size: 2.5rem; 
     margin-bottom: 20px;
-    color: #333;
+    color: #feffea;
+    text-align: center; 
+}
+
+.home-title i {
+    color: #a3de83;
+}
+
+.button-card {
+    background-color: #feffea;
+    border-radius: 10px;
+    padding: 40px; 
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px; 
 }
 
 .button-container {
     display: flex;
-    flex-direction: column;
-    gap: 15px;
+    flex-direction: row;
+    gap: 20px; 
+    width: 100%; 
+    justify-content: center; 
 }
 
 .home-btn {
-    padding: 10px 20px;
-    font-size: 1.2rem;
-    color: white;
-    background-color: #007bff;
+    padding: 15px 30px; 
+    font-size: 1.1rem;
+    background-color: #ff5d6e;
+    color: #feffea;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .home-btn:hover {
-    background-color: #0056b3;
+    background-color: #fd7482;
+    transform: scale(1.05); 
+}
+
+p {
+    margin-top: 10px; 
+    color: #a3de83;
+    text-align: center; 
+}
+
+/* Animation */
+h1 span {
+    position: relative;
+    opacity: 0;
+    animation: fade-in-text 0.75s forwards ease;
+}
+
+@keyframes fade-in-text {
+    0% { transform: translateY(0.8em); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+}
+
+
+.icon-container {
+    margin-left: 10px;
+    font-size: 2rem;
+    color: #2eb872; 
+    opacity: 0;
+    animation: fade-in-icon 1s forwards ease;
+    animation-delay: 0.5s; 
+}
+
+@keyframes fade-in-icon {
+    0% { transform: translateY(0.8em); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
 }

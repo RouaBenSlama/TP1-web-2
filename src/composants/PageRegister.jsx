@@ -48,7 +48,7 @@ const Register = () => {
 
     return (
         <div className="auth-container">
-            <h2>SignUp</h2>
+            <h1>SignUp</h1>
             <form onSubmit={handleRegister}>
                 <div className="input-group">
                     <label>Email</label>
@@ -78,7 +78,7 @@ const Register = () => {
                     />
                 </div>
                 {error && <p className="error">{error}</p>}
-                <button type="submit">SignUp</button>
+                <button type="submit" className="signup-button">SignUp</button>
             </form>
         </div>
     );

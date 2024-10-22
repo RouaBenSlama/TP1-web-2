@@ -76,11 +76,11 @@ const Connexion = () => {
 
     return (
         <div className="login-container">
-            <div className="login-box box">
-                <h2 className="title is-4">Login</h2>
+            <div className="login-box">
+                <h2 className="title is-4" id="title">Se Connecter</h2>
                 <form onSubmit={handleLogin}>
                     <div className="field">
-                        <label className="label">Email</label>
+                        <label className="label" id='labels'>Email</label>
                         <div className="control">
                             <input
                                 className="input"
@@ -94,7 +94,7 @@ const Connexion = () => {
                     {!resetPasswordMode && (
                         <>
                             <div className="field">
-                                <label className="label">Mot de passe</label>
+                                <label className="label" id='labels'>Mot de passe</label>
                                 <div className="control has-icons-right">
                                     <input
                                         className="input"
@@ -119,10 +119,10 @@ const Connexion = () => {
                                     onChange={(e) => setRememberMe(e.target.checked)}
                                     className="mr-2"
                                 />
-                                <label htmlFor="rememberMe">Se souvenir de moi</label>
+                                <label htmlFor="rememberMe" id='labels'>Se souvenir de moi</label>
                             </div>
                             {error && <p className="has-text-danger">{error}</p>}
-                            <button className="button is-primary is-fullwidth mb-3">Se connecter</button>
+                            <button className="button is-fullwidth mb-3" id='btnConnexion'>Se connecter</button>
                             <p className="forgot-password-link">
                                 <button type="button" className="button is-text" onClick={handleResetPassword}>Mot de passe oublié ?</button>
                             </p>
@@ -151,18 +151,18 @@ const Connexion = () => {
                 </form>
                 {!resetPasswordMode && (
                     <>
-                        <p className="register-link">
+                        <p className="register-link" id='labels'>
                             Pas encore inscrit? <Link to="/register"> S'inscrire ici</Link>
                         </p>
                         <hr />
                         <div className="social-login">
                         <div className="button-group">
                             <button className="social-button google-button" onClick={handleGoogleLogin}>
-                                Se connecter avec Google
+                            <i className="fab fa-google"></i> Login avec Google
                             </button>
-                            <span className="or-text">ou</span>
+                            <span className="or-text" id='labels'>ou</span>
                             <button className="social-button facebook-button" onClick={handleFacebookLogin}>
-                                 Se connecter avec Facebook
+                                <i className="fab fa-facebook" style={{ color: '#1877f2' }}></i> Login avec Facebook
                             </button>
                         </div>
                     </div>
