@@ -4,7 +4,7 @@
     align-items: center;
     justify-content: center;
     height: 100vh;
-    background: #2eb872;
+    background: #F5F7FA; 
     font-family: "Montserrat", sans-serif;
     padding: 0 20px; 
 }
@@ -12,22 +12,22 @@
 .home-title {
     font-size: 2.5rem; 
     margin-bottom: 20px;
-    color: #feffea;
+    color: #4A90E2; 
     text-align: center; 
 }
 
 .home-title i {
-    color: #a3de83;
+    color: #50E3C2; 
 }
 
 .button-card {
-    background-color: #feffea;
-    border-radius: 10px;
-    padding: 40px; 
+    background-color: #FFFFFF; 
+    border-radius: 12px; 
+    padding: 40px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); 
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: center; 
     gap: 20px; 
 }
 
@@ -36,14 +36,14 @@
     flex-direction: row;
     gap: 20px; 
     width: 100%; 
-    justify-content: center; 
+    justify-content: center;
 }
 
 .home-btn {
     padding: 15px 30px; 
     font-size: 1.1rem;
-    background-color: #ff5d6e;
-    color: #feffea;
+    background-color: #E94E77; 
+    color: #FFFFFF; 
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -51,13 +51,13 @@
 }
 
 .home-btn:hover {
-    background-color: #fd7482;
+    background-color: #D72D5B; 
     transform: scale(1.05); 
 }
 
 p {
     margin-top: 10px; 
-    color: #a3de83;
+    color: #333; 
     text-align: center; 
 }
 
@@ -73,11 +73,11 @@ h1 span {
     100% { transform: translateY(0); opacity: 1; }
 }
 
-
+/* icon stye */
 .icon-container {
     margin-left: 10px;
     font-size: 2rem;
-    color: #2eb872; 
+    color: #4A90E2; 
     opacity: 0;
     animation: fade-in-icon 1s forwards ease;
     animation-delay: 0.5s; 

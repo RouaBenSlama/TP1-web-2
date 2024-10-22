@@ -2,15 +2,15 @@ body, html {
     height: 100%;
     margin: 0;
     font-family: "Montserrat", sans-serif; 
-    background: #2eb872; 
+    background: #F5F7FA; 
 }
 
 .auth-container {
     width: 350px; 
-    padding: 20px;
-    background-color: #feffea; 
+    padding: 30px; 
+    background-color: #FFFFFF; 
     border-radius: 10px;
-    box-shadow: 0px 4px 8px rgba(102, 102, 107, 0.5); 
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); 
     position: absolute;
     top: 50%;
     left: 50%;
@@ -24,7 +24,7 @@ body, html {
 .input-group label {
     display: block;
     margin-bottom: 5px;
-    color: #606060; 
+    color: #333; 
 }
 
 .input-group input {
@@ -41,21 +41,21 @@ body, html {
 
 .forgot-password-link, .register-link {
     font-size: 0.875rem;
-    color: #2eb872; /* Third color for consistency */
+    color: #4A90E2; 
 }
 
 h1 {
     text-align: center;
-    color: #8c8c8c; 
+    color: #4A90E2; 
     margin-bottom: 20px;
-    font-size: 1.5rem;
+    font-size: 1.8rem;
 }
 
 .signup-button {
     width: 100%;
     padding: 10px;
-    background-color: #ff5d6e; 
-    color: #feffea; 
+    background-color: #E94E77; 
+    color: #FFFFFF; 
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -63,5 +63,5 @@ h1 {
 }
 
 .signup-button:hover {
-    background-color: #fd7482; 
+    background-color: #D72D5B; 
 }

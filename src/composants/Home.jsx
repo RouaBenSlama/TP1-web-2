@@ -12,7 +12,7 @@ function Home() {
         navigate("/register");
     };
 
-    // Function to animate text 
+    // Fonction pour animate 
     const animateText = (text) => {
         return text.split("").map((char, index) => {
             const style = { animationDelay: `${index / 10}s` };
@@ -28,7 +28,6 @@ function Home() {
         <div className="home-container">
             <h1 className="home-title">
                 {animateText("Site Web de Chat Transactionnel ")}
-                {/* Separate the icon for smooth animation */}
                 <span className="icon-container"> 
                     <i className="fas fa-comment-dollar"></i>
                 </span>
@@ -42,7 +41,7 @@ function Home() {
                         Inscription
                     </button>
                 </div>
-                <p>TP1 par: David Chiu, Daniel To, Judith Andrasko & Roua Ben Slama </p>
+                <p>TP1 par: David Chiu, Daniel To, Judith Andrasko & Roua Ben Slama</p>
             </div>
         </div>
     );

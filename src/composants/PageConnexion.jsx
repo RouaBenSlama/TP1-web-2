@@ -4,7 +4,6 @@ import { auth, googleProvider, facebookProvider } from '../Firebase';
 import { Link } from 'react-router-dom';
 import "./PageConnexion.css";
 
-
 const Connexion = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -156,16 +155,16 @@ const Connexion = () => {
                         </p>
                         <hr />
                         <div className="social-login">
-                        <div className="button-group">
-                            <button className="social-button google-button" onClick={handleGoogleLogin}>
-                            <i className="fab fa-google"></i> Login avec Google
-                            </button>
-                            <span className="or-text" id='labels'>ou</span>
-                            <button className="social-button facebook-button" onClick={handleFacebookLogin}>
-                                <i className="fab fa-facebook" style={{ color: '#1877f2' }}></i> Login avec Facebook
-                            </button>
+                            <div className="button-group">
+                                <button className="social-button google-button" onClick={handleGoogleLogin}>
+                                    <i className="fab fa-google"></i> Login avec Google
+                                </button>
+                                <span className="or-text" id='labels'>ou</span>
+                                <button className="social-button facebook-button" onClick={handleFacebookLogin}>
+                                    <i className="fab fa-facebook"></i> Login avec Facebook
+                                </button>
+                            </div>
                         </div>
-                    </div>
                     </>
                 )}
             </div>

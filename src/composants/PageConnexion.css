@@ -3,49 +3,59 @@
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background: #2eb872; 
+  background: #F5F7FA; 
   font-family: "Montserrat", sans-serif;
 }
 
 .login-box {
   width: 450px;
-  padding: 20px;
-  background: #feffea; 
-  box-shadow: 0 4px 8px rgb(102, 102, 107);
-  border-radius: 8px;
+  padding: 30px; 
+  background: #FFFFFF; 
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); 
+  border-radius: 12px; 
 }
 
-
-#title{
-  color: #8c8c8c; 
-  font-size: 1.5rem;
-
+#title {
+  color: #4A90E2; 
+  font-size: 1.8rem; 
+  text-align: center; 
 }
 
-#labels{
-  color: #606060;
+#labels {
+  color: #333; 
 }
+
 .label, .forgot-password-link {
   font-size: 0.875rem;
-  color: #2eb872; 
+  color: #4A90E2; 
 }
 
-.input, .button {
+.input {
   font-size: 0.875rem;
 }
 
 #btnConnexion {
-  background-color: #ff5d6e; 
-  color: #feffea;
+  background-color: #E94E77; 
+  color: #FFFFFF; 
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#btnConnexion:hover {
+  background-color: #D72D5B; 
 }
 
 .has-text-danger {
   font-size: 0.875rem;
+  color: red; 
 }
 
 .register-link {
   font-size: 0.875rem;
-  color: #a3de83; 
+  color: #50E3C2; 
 }
 
 /* Social login buttons */
@@ -72,7 +82,7 @@
   border: none;
 }
 
-/* Keep social button colors as is */
+/* Social buttons */
 .google-button {
   background-color: #db4437;
   color: white;
@@ -82,14 +92,9 @@
   background-color: #e57365;
 }
 
-.google-button i,
-.facebook-button i {
-  color: white !important;
-}
-
 .facebook-button {
   background-color: #1877f2;
-  color: white;
+  color: white !important;
 }
 
 .facebook-button:hover {
