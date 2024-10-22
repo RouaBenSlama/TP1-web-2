@@ -2,7 +2,7 @@
 
 ## Overview
 
-This project is a real-time chat application built using **React** and **Firebase** as part of a group assignment. The application allows users to create an account, authenticate securely, and join an online chat room. It also includes profile management features, enabling users to customize their profile picture and other information. The goal is to provide a user-friendly, intuitive experience with robust security features.
+This project is a real-time chat application built using **React** and **Firebase**. The application allows users to create an account, authenticate securely, and join an online chat room. It also includes profile management features, enabling users to customize their profile picture and other information. The goal is to provide a user-friendly, intuitive experience with robust security features.
 
 ## Features
 
