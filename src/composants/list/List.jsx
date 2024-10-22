@@ -28,14 +28,14 @@ const List = () => {
                     return null;
                 }
 
-                // Fetch and set the avatar or fallback to a default image
+                // Fetch the profile picture URL from Firestore, defaulting if not available
                 const avatarUrl = userData.photoURL || "/avatar.jpg";
 
                 return {
                     ...item,
                     user: userData,
                     chatId: item.chatId,
-                    avatar: avatarUrl
+                    avatar: avatarUrl,
                 };
             });
 
