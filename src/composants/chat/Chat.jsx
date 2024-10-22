@@ -24,7 +24,24 @@ const Chat = () => {
 
     useEffect(() => {
         endRef.current?.scrollIntoView({ behavior: "smooth" });
-    }, []);
+    }, [chat]);
+
+    // Fetch receiver user info
+    useEffect(() => {
+        const fetchReceiver = async () => {
+            if (user && user.receiverId) {
+                const receiverDoc = await getDoc(doc(db, "users", user.receiverId));
+                if (receiverDoc.exists()) {
+                    setReceiver(receiverDoc.data()); // Fetch the receiver's entire data, including photoURL
+                } else {
+                    console.error("No such user!");
+                }
+            }
+        };
+
+        fetchReceiver();
+    }, [user]);
+
 
     // Fetch receiver user info
     useEffect(() => {
@@ -165,7 +182,8 @@ const Chat = () => {
         <div className="chat">
             <div className="top">
                 <div className="user">
-                    <img src={receiver?.avatar || "/avatar.jpg"} alt="" /> {/* Use receiver avatar */}
+                    {/* Use the receiver's profile picture or a default image */}
+                    <img src={receiver?.photoURL || "/avatar.jpg"} alt="Profile" /> 
                     <div className="texts">
                         <span>{receiver?.email || "Loading..."}</span> {/* Display receiver email */}
                         <p> Hi my email is {receiver?.email || "Loading..."} nice to meet you</p> {/* Display receiver info */}
