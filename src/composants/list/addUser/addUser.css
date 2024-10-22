@@ -1,9 +1,9 @@
 .addUser {
     width: 400px;
     padding: 20px;
-    background-color: gray;
+    background-color: white;
     border-radius: 10px;
-    position: fixed; /* Changed to fixed to center properly */
+    position: fixed; 
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -11,6 +11,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .closeButton {
@@ -19,54 +20,98 @@
     right: 10px;
     background: none;
     border: none;
-    color: white;
+    color: #4A90E2;
     font-size: 20px;
     cursor: pointer;
+    z-index: 1; /* Ensure it stays on top */
 }
 
 .form {
     display: flex;
-    gap: 20px;
-    justify-content: flex-start;
+    gap: 10px;
+    width: 100%;
+    padding: 10px;
+}
+
+.input-container {
+    position: relative;
+    flex: 1;
+}
+
+input {
+    width: 100%;
+    padding: 10px 40px 10px 10px; /* Adjusted padding */
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    outline: none;
+}
+
+input::placeholder {
+    color: #aaa; /* Placeholder color */
+    opacity: 1; /* Ensures full opacity */
+}
+
+input:focus {
+    border-color: #4A90E2;
+}
+
+.search-icon {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #4A90E2; /* Icon color */
 }
 
 button {
     padding: 10px;
     border-radius: 10px;
-    background-color: blue;
+    background-color: #4A90E2; /* Default color */
     color: white;
     border: none;
     cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button.add {
+    background-color: #4A90E2; /* Blue for add */
+}
+
+button.added {
+    background-color: green; /* Green for added */
+}
+
+button:hover {
+    background-color: #357ABD; /* Hover effect for default button */
+}
+
+/* Specific hover effect for added button */
+button.added:hover {
+    background-color: darkgreen; /* Darker green for hover */
 }
 
 .user {
-    margin-top: 50px;
+    margin-top: 20px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     width: 100%;
+}
 
-    .detail {
-        display: flex;
-        align-items: center;
-        gap: 20px;
+.detail {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
 
-        img {
-            width: 50px;
-            height: 50px;
-            object-fit: cover;
-            border-radius: 50%;
-        }
-    }
+img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 50%;
+}
 
-    button {
-        padding: 5px 10px;
-        border-radius: 10px;
-        background-color: green;
-        color: white;
-        border: none;
-        cursor: pointer;
-        margin-left: auto;
-        width: auto;
-    }
+/* Adjust size of the checked icon */
+button.added i {
+    font-size: 20px; /* Adjust size as needed */
 }
