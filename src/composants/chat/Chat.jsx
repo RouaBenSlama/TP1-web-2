@@ -178,7 +178,7 @@ const Chat = () => {
             <div className="bottom">
                 <div className="icons">
                     <label htmlFor="file">
-                        <i className="fas fa-image" aria-hidden="true"></i>
+                        <i className="fas fa-image" aria-hidden="true" style={{marginTop: '8px'}}></i>
                     </label>
                     <input type="file" id="file" style={{ display: "none" }} onChange={handleImg} />
                     <i className="fas fa-camera" aria-hidden="true"></i>
