@@ -18,7 +18,7 @@ const Dashboard = () => {
                     <List />
                 </div>
                 <div className="chat-container">
-                    <h2>Chat</h2>
+                    
                     {/* Contenu de la fenêtre de chat */}
                     {chatId && <Chat />}
 

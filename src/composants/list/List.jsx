@@ -20,7 +20,6 @@ const List = () => {
             const promises = items.map(async (item) => {
                 const userDocRef = doc(db, "users", item.receiverId);
                 const userDocSnap = await getDoc(userDocRef);
-
                 const userData = userDocSnap.data();
 
                 if (!userData) {
@@ -28,7 +27,6 @@ const List = () => {
                     return null;
                 }
 
-                // Fetch the profile picture URL from Firestore, defaulting if not available
                 const avatarUrl = userData.photoURL || "/avatar.jpg";
 
                 return {
@@ -117,19 +115,18 @@ const List = () => {
         <div className="chatList">
             <div className="search">
                 <div className="searchBar">
-                    <img src="/search.png" alt="loupe" />
                     <input
                         type="text"
                         className="input"
                         placeholder="Search"
                         value={searchTerm}
+                        style={{ paddingLeft: '40px' }} 
                         onChange={(e) => setSearchTerm(e.target.value)}
                     />
+                    <i className="fas fa-search"></i>
                 </div>
-                <img
-                    src={addUser ? "/minus.png" : "/plus.png"}
-                    alt="addIcon"
-                    className="add"
+                <i
+                    className={`fas ${addUser ? "fa-minus" : "fa-plus"} add`}
                     onClick={() => setAddUser((prev) => !prev)}
                 />
             </div>
@@ -141,7 +138,7 @@ const List = () => {
                     style={{ backgroundColor: chat?.isSeen ? "transparent" : "blue" }}
                 >
                     <img
-                        src={chat.avatar} // Use the avatar URL fetched from Firestore
+                        src={chat.avatar}
                         alt="profilePic"
                     />
                     <div className="texts">

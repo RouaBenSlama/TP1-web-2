@@ -31,15 +31,10 @@
     width: 75%; 
     background-color: #f7f7f7;
     padding: 20px;
-<<<<<<< HEAD
     overflow: visible; /* Allow the emoji picker to overflow without scrolling */
     position: relative; /* Ensure child elements can use absolute positioning */
     background: linear-gradient(135deg, #6cffe9, #4A90E2);
     background-size: 400% 400%;
     animation: gradient-animation 15s ease infinite;
-=======
-    overflow: visible; 
-    position: relative; 
->>>>>>> e70b32613a11d377a891c914ae1ff73f38ff7db7
 }
 

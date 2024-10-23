@@ -7,46 +7,64 @@
 
 .search {
     display: flex;
-    align-items: center; /* Centre verticalement */
-    justify-content: center; /* Centre horizontalement */
-    gap: 20px;
-    padding: 20px;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 15px;
 }
 
 .searchBar {
-    flex: 1; /* Permet à la barre de recherche d'occuper tout l'espace disponible */
-    background-color: rgb(158, 158, 158);
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    border-radius: 10px;
-    padding: 10px; /* Ajoute un peu de padding à l'intérieur */
+    flex: 1;
+    position: relative;
 }
 
 .input {
-    background-color: transparent;
-    border: none;
+    background-color: white;
+    border: 1px solid lightblue;
+    border-radius: 10px;
+    padding: 10px 40px 10px 15px;
     outline: none;
-    flex: 1;
-    color: white;
+    color: black;
+    font-size: 14px;
+    transition: border-color 0.3s;
+}
+
+.input:focus {
+    border-color: blue;
+}
+
+.searchBar i {
+    position: absolute;
+    left: 15px;
+    top: 40%;
+    transform: translateY(-50%);
+    font-size: 16px; /* Adjust icon size */
+    color: gray; /* Icon color */
 }
 
 .add {
-    background-color: grey;
-    width: 36px;
-    height: 36px;
-    padding: 10px;
+    background-color: white;
+    width: 30px;
+    height: 30px;
+    padding: 8px;
     border-radius: 10px;
     cursor: pointer;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .item {
     display: flex;
     align-items: center;
     gap: 20px;
-    padding: 20px;
+    padding: 15px;
     cursor: pointer;
-    border-bottom: 1px solid gray;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s;
+}
+
+.item:hover {
+    background-color: rgba(211, 211, 211, 0.5);
 }
 
 .item img {
@@ -59,25 +77,26 @@
 .texts {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 5px;
 }
 
 .texts span {
     font-weight: 500;
+    color: black;
 }
 
 .texts p {
     font-size: 14px;
     font-weight: 300;
+    color: gray;
 }
 
-/* Styles for the Add User Popup */
 .addUserContainer {
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: gray;
+    background-color: white;
     padding: 20px;
     border-radius: 10px;
     z-index: 1000;
@@ -92,17 +111,17 @@
     position: absolute;
     top: 10px;
     right: 10px;
-    width: 24px; /* Width of the square */
-    height: 24px; /* Height of the square */
-    background-color: white; /* Background color of the button */
-    border: 1px solid gray; /* Optional border for the button */
-    border-radius: 4px; /* Optional border radius for rounded corners */
+    width: 24px;
+    height: 24px;
+    background-color: white;
+    border: 1px solid gray;
+    border-radius: 4px;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
     color: black;
-    font-size: 16px; /* Font size for the "X" */
+    font-size: 16px;
     font-weight: bold;
-    line-height: 1; /* Ensures the "X" is centered properly */
+    line-height: 1;
 }
