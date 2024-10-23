@@ -9,8 +9,6 @@
     font-family: "Montserrat", sans-serif;
     padding: 0 20px;
     position: relative;
-    z-index: 1;
-    animation: gradient-animation 15s ease infinite;
 }
 
 .home-title {

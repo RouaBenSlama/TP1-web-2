@@ -2,14 +2,8 @@ body, html {
     height: 100%;
     margin: 0;
     font-family: "Montserrat", sans-serif; 
-<<<<<<< HEAD
     background-image: url('../background.jpg');
     background-size: cover;
-=======
-    background: #f8f8fc;
-    background-size: 400% 400%;
-    animation: gradient-animation 15s ease infinite;
->>>>>>> c5244693550216326d513df943612f22396c9daa
 }
 
 .auth-container {
