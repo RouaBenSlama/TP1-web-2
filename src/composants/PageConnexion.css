@@ -6,15 +6,8 @@
   font-family: "Montserrat", sans-serif;
   position: relative;
   overflow: hidden;
-<<<<<<< HEAD
-  background: linear-gradient(135deg, #6cffe9, #4A90E2);
   background-image: url('../background.jpg');
   background-size: cover;
-=======
-  background: #f8f8fc;
-  background-size: 400% 400%;
-  animation: gradient-animation 15s ease infinite;
->>>>>>> c5244693550216326d513df943612f22396c9daa
 }
 
 .login-box {
@@ -23,6 +16,7 @@
   background: rgba(255, 255, 255, 0.8);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   border-radius: 12px;
+  z-index: 1;
 }
 
 #title {
@@ -37,7 +31,7 @@
 }
 
 .label, .forgot-password-link {
-  font-size: 0.87rem;
+  font-size: 0.875rem;
   color: #4a90e2;
 }
 
@@ -46,16 +40,17 @@
 }
 
 #btnConnexion {
-  background-color: #4A90E2;
+  background-color: #50E3C2;
   color: #ffffff;
   width: 100%;
   padding: 10px;
+  border: none;
   border-radius: 5px;
   cursor: pointer;
 }
 
 #btnConnexion:hover {
-  background-color: #6faaec;;
+  background-color: #50E3C2;
 }
 
 .has-text-danger {

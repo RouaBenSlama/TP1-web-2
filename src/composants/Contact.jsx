@@ -91,89 +91,89 @@ const Contacts = () => {
     };
 
     return (
-            <div className="contacts-page">
-                <Navbar />
-                <div className="contacts-content">
-                    <h2 className="title">Mes Contacts</h2>
-                    <div className="contact-list">
-                        {contacts.map((contact) => (
-                            <div key={contact.id} className="contact-item">
-                                <div className="contact-avatar">
-                                    {contact.image ? (
-                                        <img src={contact.image} alt={contact.name} className="avatar-image" />
-                                    ) : (
-                                        <div className="default-avatar">{contact.name[0]}</div>
-                                    )}
-                                </div>
-                                <div className="contact-info">
-                                    <h5>{contact.name}</h5>
-                                    <p>{contact.phone}</p>
-                                </div>
+        <div className="contacts-page">
+            <Navbar />
+            <div className="contacts-content">
+                <h2 className="title">Mes Contacts</h2>
+                <div className="contact-list">
+                    {contacts.map((contact) => (
+                        <div key={contact.id} className="contact-item">
+                            <div className="contact-avatar">
+                                {contact.image ? (
+                                    <img src={contact.image} alt={contact.name} className="avatar-image" />
+                                ) : (
+                                    <div className="default-avatar">{contact.name[0]}</div>
+                                )}
                             </div>
-                        ))}
-                    </div>
-        
-                    {showForm && (
-                        <div className="modal-overlay">
-                            <div className="modal-content">
-                                <h2>Ajouter un Contact</h2>
-                                <input
-                                    type="text"
-                                    className="input"
-                                    placeholder="Nom"
-                                    value={newContact.name}
-                                    onChange={(e) => setNewContact({ ...newContact, name: e.target.value })}
-                                    required
-                                />
-                                <input
-                                    type="text"
-                                    className="input"
-                                    placeholder="Téléphone"
-                                    value={newContact.phone}
-                                    onChange={(e) => setNewContact({ ...newContact, phone: e.target.value })}
-                                    required
-                                />
-                                <div className="file-input-container">
-                                    <label className="file-label">Photo de profil</label>
-                                    <input
-                                        type="file"
-                                        className="file-input"
-                                        onChange={handleImageUpload}
-                                        accept="image/*"
-                                        style={{ display: 'none' }}
-                                        id="file-upload"
-                                    />
-                                    <label className="button is-primary" htmlFor="file-upload">
-                                        <i className="fas fa-image"></i> Choisir une image
-                                    </label>
-                                    {uploading && (
-                                        <progress className="progress is-link" value={uploadProgress} max="100">
-                                            {uploadProgress}%
-                                        </progress>
-                                    )}
-                                    {uploadSuccess && (
-                                        <p className="success-message">Téléchargement terminé !</p>
-                                    )}
-                                    {imagePreview && <img src={imagePreview} alt="Preview" className="image-preview" />}
-                                </div>
-                                <div className="modal-actions">
-                                    <button className="button is-link" onClick={handleAddContact}>
-                                        <i className="fas fa-user-plus"></i> Ajouter Contact
-                                    </button>
-                                    <button className="button is-danger" onClick={resetForm}>
-                                        <i className="fas fa-times"></i> Annuler
-                                    </button>
-                                </div>
+                            <div className="contact-info">
+                                <h5>{contact.name}</h5>
+                                <p>{contact.phone}</p>
                             </div>
                         </div>
-                    )}
-        
-                    <button className="add-button" onClick={() => setShowForm(true)}>
-                        <i className="fas fa-user-plus"></i> Ajouter un contact
-                    </button>
+                    ))}
                 </div>
+        
+                {showForm && (
+                    <div className="modal-overlay">
+                        <div className="modal-content">
+                            <h2>Ajouter un Contact</h2>
+                            <input
+                                type="text"
+                                className="input"
+                                placeholder="Nom"
+                                value={newContact.name}
+                                onChange={(e) => setNewContact({ ...newContact, name: e.target.value })}
+                                required
+                            />
+                            <input
+                                type="text"
+                                className="input"
+                                placeholder="Téléphone"
+                                value={newContact.phone}
+                                onChange={(e) => setNewContact({ ...newContact, phone: e.target.value })}
+                                required
+                            />
+                            <div className="file-input-container">
+                                <label className="file-label">Photo de profil</label>
+                                <input
+                                    type="file"
+                                    className="file-input"
+                                    onChange={handleImageUpload}
+                                    accept="image/*"
+                                    style={{ display: "none" }}
+                                    id="file-upload"
+                                />
+                                <label className="button is-primary" htmlFor="file-upload">
+                                    <i className="fas fa-image"></i> Choisir une image
+                                </label>
+                                {uploading && (
+                                    <progress className="progress is-link" value={uploadProgress} max="100">
+                                        {uploadProgress}%
+                                    </progress>
+                                )}
+                                {uploadSuccess && (
+                                    <p className="success-message">Téléchargement terminé !</p>
+                                )}
+                                {imagePreview && <img src={imagePreview} alt="Preview" className="image-preview" />}
+                            </div>
+                            <div className="modal-actions">
+                                <button className="button is-link" onClick={handleAddContact}>
+                                    <i className="fas fa-user-plus"></i> Ajouter Contact
+                                </button>
+                                <button className="button is-danger" onClick={resetForm}>
+                                    <i className="fas fa-times"></i> Annuler
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                )}
+        
+                <button className="add-button" onClick={() => setShowForm(true)}>
+                    <i className="fas fa-user-plus"></i> Ajouter un contact
+                </button>
             </div>
-        );
+        </div>
+    );
         
 };
 
