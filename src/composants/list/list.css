@@ -30,7 +30,7 @@
 }
 
 .input:focus {
-    border-color: blue;
+    border-color: #607374;
 }
 
 .searchBar i {

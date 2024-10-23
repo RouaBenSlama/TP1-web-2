@@ -33,8 +33,7 @@
     padding: 20px;
     overflow: visible; 
     position: relative;
-    background: linear-gradient(135deg, #6cffe9, #4A90E2);
-    background-size: 400% 400%;
-    animation: gradient-animation 15s ease infinite;
+    background-image: url('../background.jpg');
+    background-size: cover;
 }
 

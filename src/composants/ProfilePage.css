@@ -1,9 +1,8 @@
 .profile-page {
     display: flex;
     height: 100vh;
-    background: linear-gradient(135deg, #6cffe9, #4A90E2);
-    background-size: 400% 400%;
-    animation: gradient-animation 15s ease infinite;
+    background-image: url('../background.jpg');
+    background-size: cover;
     font-family: "Montserrat", sans-serif;
 }
 
@@ -84,5 +83,5 @@ input[type="file"] {
 }
 
 .button:last-of-type {
-    background-color: #E94E77;
+    background-color: #607374;
 }

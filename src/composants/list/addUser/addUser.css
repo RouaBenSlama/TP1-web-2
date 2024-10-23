@@ -66,11 +66,8 @@ input:focus {
 button {
     padding: 10px;
     border-radius: 10px;
-<<<<<<< HEAD
     background-color: #4a90e2;
-=======
     background-color: #4A90E2; /* Default color */
->>>>>>> 48bc466619477ff5bf32a31779b2d01c4d3ce3b6
     color: white;
     border: none;
     cursor: pointer;
@@ -82,7 +79,7 @@ button.add {
 }
 
 button.added {
-    background-color: green; /* Green for added */
+    background-color: #50E3C2; /* Green for added */
 }
 
 button:hover {
@@ -91,7 +88,7 @@ button:hover {
 
 /* Specific hover effect for added button */
 button.added:hover {
-    background-color: darkgreen; /* Darker green for hover */
+    background-color: #50E3C2; /* Darker green for hover */
 }
 
 .user {
@@ -100,32 +97,6 @@ button.added:hover {
     align-items: center;
     justify-content: space-between;
     width: 100%;
-<<<<<<< HEAD
-
-    .detail {
-        display: flex;
-        align-items: center;
-        gap: 20px;
-
-        img {
-            width: 50px;
-            height: 50px;
-            object-fit: cover;
-            border-radius: 50%;
-        }
-    }
-
-    button {
-        padding: 5px 10px;
-        border-radius: 10px;
-        background-color: #50E3C2;
-        color: white;
-        border: none;
-        cursor: pointer;
-        margin-left: auto;
-        width: auto;
-    }
-=======
 }
 
 .detail {
@@ -144,5 +115,4 @@ img {
 /* Adjust size of the checked icon */
 button.added i {
     font-size: 20px; /* Adjust size as needed */
->>>>>>> 48bc466619477ff5bf32a31779b2d01c4d3ce3b6
 }

@@ -3,13 +3,12 @@
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: rgba(255, 255, 255, 0.8);
   font-family: "Montserrat", sans-serif;
   position: relative;
   overflow: hidden;
   background: linear-gradient(135deg, #6cffe9, #4A90E2);
-  background-size: 400% 400%;
-  animation: gradient-animation 15s ease infinite;
+  background-image: url('../background.jpg');
+  background-size: cover;
 }
 
 .login-box {
@@ -90,12 +89,12 @@
 }
 
 .google-button {
-  background-color: #db4437;
+  background-color: #607374;
   color: white;
 }
 
 .google-button:hover {
-  background-color: #e57365;
+  background-color: #607374;
 }
 
 .facebook-button {
@@ -117,4 +116,8 @@
   color: #555;
   padding: 0 8px;
   white-space: nowrap;
+}
+
+.remember-me {
+  width: 70%
 }

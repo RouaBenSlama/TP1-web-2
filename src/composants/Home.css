@@ -4,8 +4,8 @@
     align-items: center;
     justify-content: center;
     height: 100vh;
-    background: linear-gradient(135deg, #6cffe9, #4A90E2);
-    background-size: 400% 400%;
+    background-image: url('../background.jpg');
+    background-size: cover;
     font-family: "Montserrat", sans-serif;
     padding: 0 20px;
     position: relative;
