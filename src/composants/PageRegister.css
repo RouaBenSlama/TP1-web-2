@@ -2,7 +2,7 @@ body, html {
     height: 100%;
     margin: 0;
     font-family: "Montserrat", sans-serif; 
-    background: linear-gradient(135deg, #6cffe9, #4A90E2);
+    background: #f8f8fc;
     background-size: 400% 400%;
     animation: gradient-animation 15s ease infinite;
 }

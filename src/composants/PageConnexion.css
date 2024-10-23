@@ -7,7 +7,7 @@
   font-family: "Montserrat", sans-serif;
   position: relative;
   overflow: hidden;
-  background: linear-gradient(135deg, #6cffe9, #4A90E2);
+  background: #f8f8fc;
   background-size: 400% 400%;
   animation: gradient-animation 15s ease infinite;
 }
@@ -33,7 +33,7 @@
 }
 
 .label, .forgot-password-link {
-  font-size: 0.875rem;
+  font-size: 0.87rem;
   color: #4a90e2;
 }
 
@@ -42,17 +42,16 @@
 }
 
 #btnConnexion {
-  background-color: #50E3C2;
+  background-color: #4A90E2;
   color: #ffffff;
   width: 100%;
   padding: 10px;
-  border: none;
   border-radius: 5px;
   cursor: pointer;
 }
 
 #btnConnexion:hover {
-  background-color: #50E3C2;
+  background-color: #6faaec;;
 }
 
 .has-text-danger {
