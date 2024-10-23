@@ -108,10 +108,9 @@
             p {
                 background-color: blueviolet;
                 color: white;
-                border-radius: 20px 20px 0 20px; /* Rounded corners for incoming messages */
+                border-radius: 20px 20px 0 20px;
                 padding: 10px 15px;
                 position: relative;
-                /* Optional: Add a slight shadow */
                 box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
             }
 
