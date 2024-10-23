@@ -5,11 +5,13 @@ import { useState } from "react";
 
 const AddUser = ({ onClose }) => {
     const [user, setUser] = useState(null);
+    const [errorMessage, setErrorMessage] = useState("");
     const currentUser = auth.currentUser;
     const [isAdded, setIsAdded] = useState(false);
 
     const handleSearch = async (e) => {
         e.preventDefault();
+        setErrorMessage(""); // Reset error message on new search
         const formData = new FormData(e.target);
         const email = formData.get("email");
 
@@ -20,78 +22,86 @@ const AddUser = ({ onClose }) => {
 
             if (!querySnapshot.empty) {
                 setUser(querySnapshot.docs[0].data());
+            } else {
+                setErrorMessage("No user found with this email.");
+                setUser(null);
             }
         } catch (error) {
             console.log(error);
+            setErrorMessage("An error occurred while searching for the user.");
         }
     };
 
     const handleAdd = async () => {
         if (!user || !user.uid || !currentUser || !currentUser.uid) {
-            console.error("User or Current User information is missing.");
+            setErrorMessage("User or Current User information is missing.");
             return;
         }
 
-        const chatRef = collection(db, "chats");
-        const userChatRef = collection(db, "userChats");
+        const userChatRef = doc(db, "userChats", currentUser.uid);
 
         try {
-            const newChatRef = doc(chatRef);
-            await setDoc(newChatRef, {
+            const userChatSnapshot = await getDoc(userChatRef);
+
+            if (userChatSnapshot.exists()) {
+                const existingChats = userChatSnapshot.data().chats || [];
+                const existingChat = existingChats.find(
+                    (chat) => chat.receiverId === user.uid
+                );
+
+                if (existingChat) {
+                    setErrorMessage("Chat with this user already exists.");
+                    setIsAdded(true);
+                    return;
+                }
+            }
+
+            const chatRef = doc(collection(db, "chats"));
+            await setDoc(chatRef, {
                 createdAt: serverTimestamp(),
                 messages: []
             });
 
-            const userChatDoc = doc(userChatRef, user.uid);
-            const userChatSnapshot = await getDoc(userChatDoc);
+            const chatData = {
+                chatId: chatRef.id,
+                lastMessage: "",
+                receiverId: user.uid,
+                updatedAt: Timestamp.now(),
+            };
 
             if (userChatSnapshot.exists()) {
-                await updateDoc(userChatDoc, {
-                    chats: arrayUnion({
-                        chatId: newChatRef.id,
-                        lastMessage: "",
-                        receiverId: currentUser.uid,
-                        updatedAt: Timestamp.now(),
-                    })
+                await updateDoc(userChatRef, {
+                    chats: arrayUnion(chatData),
                 });
             } else {
-                await setDoc(userChatDoc, {
-                    chats: [{
-                        chatId: newChatRef.id,
-                        lastMessage: "",
-                        receiverId: currentUser.uid,
-                        updatedAt: Timestamp.now(),
-                    }]
+                await setDoc(userChatRef, {
+                    chats: [chatData],
                 });
             }
 
-            const currentUserChatDoc = doc(userChatRef, currentUser.uid);
-            const currentUserChatSnapshot = await getDoc(currentUserChatDoc);
+            const selectedUserChatRef = doc(db, "userChats", user.uid);
+            const selectedUserChatSnapshot = await getDoc(selectedUserChatRef);
+            const selectedChatData = {
+                chatId: chatRef.id,
+                lastMessage: "",
+                receiverId: currentUser.uid,
+                updatedAt: Timestamp.now(),
+            };
 
-            if (currentUserChatSnapshot.exists()) {
-                await updateDoc(currentUserChatDoc, {
-                    chats: arrayUnion({
-                        chatId: newChatRef.id,
-                        lastMessage: "",
-                        receiverId: user.uid,
-                        updatedAt: Timestamp.now(),
-                    })
+            if (selectedUserChatSnapshot.exists()) {
+                await updateDoc(selectedUserChatRef, {
+                    chats: arrayUnion(selectedChatData),
                 });
             } else {
-                await setDoc(currentUserChatDoc, {
-                    chats: [{
-                        chatId: newChatRef.id,
-                        lastMessage: "",
-                        receiverId: user.uid,
-                        updatedAt: Timestamp.now(),
-                    }]
+                await setDoc(selectedUserChatRef, {
+                    chats: [selectedChatData],
                 });
             }
 
-            // Mark the user as added
             setIsAdded(true);
         } catch (error) {
             console.log("Error adding user to chat:", error);
+            setErrorMessage("An error occurred while adding the user.");
         }
     };
 
@@ -108,7 +118,7 @@ const AddUser = ({ onClose }) => {
                 <div className="input-container">
                     <input
                         type="text"
-                        placeholder="Entrez l'email"
+                        placeholder="Enter email"
                         name="email"
                         required
                         style={{ paddingLeft: '40px' }} 
@@ -117,6 +127,9 @@ const AddUser = ({ onClose }) => {
                 </div>
                 <button type="submit">Search</button>
             </form>
+
+            {errorMessage && <div className="errorMessage">{errorMessage}</div>}
+
             {user && (
                 <div className="user">
                     <div className="detail">
